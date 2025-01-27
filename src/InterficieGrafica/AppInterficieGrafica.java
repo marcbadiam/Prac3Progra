@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import Classes.*;
+import classes.*;
 import GestioFitxers.*;
 
 public class AppInterficieGrafica extends JFrame {

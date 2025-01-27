@@ -4,7 +4,7 @@
 
 package Llistes;
 
-import Classes.*;
+import classes.*;
 import java.io.*;
 
 public class LlistaMembres {

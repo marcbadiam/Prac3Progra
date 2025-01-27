@@ -1,16 +1,9 @@
 package ProgramaPrincipal;
 import java.util.Scanner;
 
-import Classes.Accio;
-import Classes.Alumnes;
-import Classes.Associacio;
-import Classes.Data;
-import Classes.Professors;
-import Classes.Xerrada;
+import classes.*;
 import GestioFitxers.LlistaAssociacionsSerial;
-import Llistes.LlistaAccions;
-import Llistes.LlistaAssociacions;
-import Llistes.LlistaMembres;
+import Llistes.*;
 
 public class programaPrincipal {
     ///
@@ -174,127 +167,10 @@ public class programaPrincipal {
                     System.out.println("18. Sortir de l'aplicacio. Fins la propera!");
                     break;
 
-                case 50:
-                    System.out.println("\n!!!!!!!!!!!:");
-                    System.out.println("50. Comprovació classe Xerrada:\n\n");
                 
-                   
-                    /*LlistaAssociacions llistaAssociacions = new LlistaAssociacions();
-                    String[] titulacions = {"GEB", "GEI", "GESST"};
-                    String[] membres = {"Membre1", "Membre2", "Membre3"};
-                    Associacio associacio = new Associacio("Associació de Prova", "email@example.com", titulacions, membres, "President", "Secretari", "Tresorer", 3, 0);
-                    llistaAssociacions.afegirAssoc(associacio);
                     
-                    
-                    Data dataXerrada = new Data(); 
-                    Xerrada xerrada1 = new Xerrada("Xerrada1", "Toni", dataXerrada, 50, (short) 5, llistaAssociacions);
-                    Xerrada xerrada2 = new Xerrada("Xerrada2", "Albert", dataXerrada, 32, (short) 3, llistaAssociacions);
-                    
-                    System.out.println("Detalls de la Xerrada 1:");
-                    System.out.println(xerrada1.toString());
-                    System.out.println("Detalls de la Xerrada 2:");
-                    System.out.println(xerrada2.toString());
-                
-                    // getters
-                    System.out.println("\nProva dels getters:");
-                    System.out.println("Data de la Xerrada: " + xerrada1.getDataXerrada());
-                    System.out.println("Nombre d'Assistents: " + xerrada1.getNAssistents());
-                    System.out.println("Valoracions: " + xerrada1.getValoracions());
-                
-                    // setters
-                    System.out.println("\nProva dels setters:");
-                    Data novaDataXerrada = new Data(); 
-                    xerrada1.setDataXerrada(novaDataXerrada);
-                    xerrada1.setNAssistents(100);
-                    xerrada1.setValoracions((short) 4);
-                
-                    // Mostrar despres de setters
-                    System.out.println("Detalls de la Xerrada després de modificar:");
-                    System.out.println(xerrada1.toString());
-                    break;*/
-                case 51:/* 
-                    System.out.println("\n!!!!!!!!!!!:");
-                    System.out.println("51. Comprovació classe LlistaAccions:\n\n");
-
-                    
-                    LlistaAssociacions llistaAssociacions51 = new LlistaAssociacions();
-                    String[] titulacions51 = {"GEB", "GEI", "GESST"};
-                    String[] membres51 = {"Membre1", "Membre2", "Membre3"};
-                    Associacio associacio51 = new Associacio("Associació de Prova", "email@example.com", titulacions51, membres51, "President", "Secretari", "Tresorer", 3, 0);
-                    llistaAssociacions51.afegirAssoc(associacio51);
-                   
-                    LlistaAccions llistaAccions = new LlistaAccions();
-                    Accio accio1 = new Accio("Accio1", "Jaume", llistaAssociacions51);
-                    Accio accio2 = new Accio("Accio2", "Miquel", llistaAssociacions51);
-                    llistaAccions.afegirAccio(accio1);
-                    llistaAccions.afegirAccio(accio2);
-
-                    
-                    System.out.println("Detalls de la Llista d'Accions:");
-                    System.out.println(llistaAccions.toString());
-
-                    // getters
-                    System.out.println("\nProva dels getters:");
-                    System.out.println("Nombre d'Accions: " + llistaAccions.getNumAccions());
-                    break;*/
-
-                case 52:
-                    System.out.println("\n!!!!!!!!!!!:");
-                    System.out.println("51. Comprovació classe LlistaAssociacionsSerial:\n\n");
 
                 
-                    LlistaAssociacionsSerial llista = new LlistaAssociacionsSerial();
-
-                    
-                    String[] titulacions1 = {"GEB", "GEI"};
-                    String[] membres1 = {"Membre1", "Membre2", "Membre3"};
-                    Associacio assoc1 = new Associacio("Associació1", "pr1@example.com", titulacions1, membres1, "President1", "Secretari1", "Tresorer1", 3, 0);
-                    String[] titulacions2 = {"GEB","GESST"};
-                    String[] membres2 = {"Membre4", "Membre5", "Membre6"};
-                    Associacio assoc2 = new Associacio("Associació2", "pr2@example.com", titulacions2, membres2, "President2", "Secretari2", "Tresorer2", 3, 0);
-                    String[] titulacions3 = {"GEI", "GESST"};
-                    String[] membres3 = {"Membre7", "Membre8", "Membre9"};
-                    Associacio assoc3 = new Associacio("Associació3", "pr3@example.com", titulacions3, membres3, "President3", "Secretari3", "Tresorer3", 3, 0);
-
-
-                   
-                    llista.afegirAssoc(assoc1);
-                    llista.afegirAssoc(assoc2);
-                    llista.afegirAssoc(assoc3);
-
-                    System.out.println(llista.toString());
-
-                    llista.eliminarAssoc("Associació2");
-                    
-                    System.out.println("Numero d'elements actuals: " + llista.getNElem());
-                    
-                    System.out.println("Associacions actuals:");
-                    System.out.println(llista.toString());
-
-                    //part serialitzada
-
-                    llista.guardarAssociacions();
-                    
-                    LlistaAssociacionsSerial llistaCarregada = new LlistaAssociacionsSerial();
-                    llistaCarregada.carregarAssociacions();
-
-                    System.out.println("Llista Associacions Carregades:");
-                    System.out.println(llistaCarregada.toString());
-                    
-                    if(llistaCarregada.equals(llista))
-                        System.out.println("Les dues llistes són iguals i per tant la serialització ha funcionat correctament");
-                    else    
-                        System.out.println("Les dues llistes no són iguals i per tant la serialització no ha funcionat correctament");
-                    break;
-
-                case 60:
-                    System.out.println("\n!!!!!!!!!!!:");
-                    System.out.println("60. Comprovació professor/alumne:\n\n");
-                    LlistaMembres professorOAlumne = new LlistaMembres();
-                    professorOAlumne.carregarMembres();
-                    professorOAlumne.toString();
-                    System.out.println(professorOAlumne.toString());
-                    break;
 
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");

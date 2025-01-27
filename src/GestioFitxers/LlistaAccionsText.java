@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import Llistes.LlistaAssociacions;
-import Classes.*;
+import classes.*;
 
 /**
  * @author Yeray Zarza

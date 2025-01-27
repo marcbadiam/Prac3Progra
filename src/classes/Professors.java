@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 /**
  * @author Yerai Zarza
  */
