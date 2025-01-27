@@ -11,6 +11,7 @@ import GestioFitxers.LlistaAssociacionsSerial;
 import Llistes.LlistaAccions;
 import Llistes.LlistaAssociacions;
 import Llistes.LlistaMembres;
+import GestioFitxers.LlistaAccionsText;
 
 public class programaPrincipal {
     ///
@@ -173,7 +174,31 @@ public class programaPrincipal {
                     System.out.println("\nHeu escollit:");
                     System.out.println("18. Sortir de l'aplicacio. Fins la propera!");
                     break;
+                case 30:
+                    System.out.println("\n!!!!!!!!!!!:");
+                    System.out.println("18. Comprovacio AccionsText!");
+                    LlistaAssociacions llistaAssociacions51 = new LlistaAssociacions();
+                    String[] titulacions51 = {"GEB", "GEI", "GESST"};
+                    String[] membres51 = {"Membre1", "Membre2", "Membre3"};
+                    Associacio associacio51 = new Associacio("Associació de Prova", "email@example.com", titulacions51, membres51, "President", "Secretari", "Tresorer", 3, 0);
+                    llistaAssociacions51.afegirAssoc(associacio51);
+                    System.out.println("Arriba aqui! 185");
+                    LlistaAccionsText llistaAccions = new LlistaAccionsText();
+                    
+                    //Accio accio1 = new Accio("Accio1", "Jaume", llistaAssociacions51);
+                    //Accio accio2 = new Accio("Accio2", "Miquel", llistaAssociacions51);
+                    //llistaAccions.afegirAccio(accio1);
+                    //llistaAccions.afegirAccio(accio2);
+                    System.out.println("Arriba aqui! 192");
+                    llistaAccions.carregarAccions();
+                    System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    System.out.println("Detalls de la Llista d'Accions:");
+                    System.out.println(llistaAccions.toString());
 
+                    // getters
+                    System.out.println("\nProva dels getters:");
+                    System.out.println("Nombre d'Accions: " + llistaAccions.getNumAccions());
+                    break;
                 case 50:
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("50. Comprovació classe Xerrada:\n\n");

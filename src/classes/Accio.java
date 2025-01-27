@@ -16,8 +16,8 @@ public class Accio {
     int[] posicionsAssociacions;
 
     public Accio(String t, String r, int[] posicionsAssociacions) {//String = "1;4;5"
-        this.llistaAss = new LlistaAssociacionsSerial();
-        this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
+        //this.llistaAss = new LlistaAssociacionsSerial();
+        //this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
         codi = generarCodi(); 
         titol = t; 
         responsable = r; 

@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 import Llistes.LlistaAssociacions;
 import Classes.*;
@@ -23,6 +22,10 @@ public class LlistaAccionsText {
     public LlistaAccionsText(){
         llista = new Accio[CAPACITAT_INICIAL];
         nElem = 0;
+    }
+
+    public int getNumAccions(){
+        return nElem;
     }
 
     public void afegirAccio(Accio ac) {
@@ -110,7 +113,6 @@ public class LlistaAccionsText {
         try {
             br = new BufferedReader(new FileReader(fitxer));
             String linia;
-            LlistaAssociacions llistaAs = new LlistaAssociacions();
             while ((linia = br.readLine()) != null) {
                 
                 String[] camps = linia.split(";");
@@ -134,9 +136,6 @@ public class LlistaAccionsText {
                 Short nVegVal = Short.parseShort(camps[6]);
                 int cost = Integer.parseInt(camps[7]);
 
-                //String[] associacions = nomAssociacions.split(",");
-                //Associacio assoc = new Associacio(codi, responsable, data, associacions, nomAssociacions, nomAssociacions, nomAssociacions, valoracions, vegades);
-                //llistaAs.afegirAssoc(assoc);
                 Accio ac = new Accio(titol, responsable, posicions);
                 
                 if (esDemostracio == 0) {
@@ -208,6 +207,21 @@ public class LlistaAccionsText {
             System.out.println("Error en el format numèric: " + e.getMessage());
         }
         return null; // Retornar null si no se encuentra la posición
+    }
+    public String toString() { 
+        String str = "";
+        int i=0;
+        if(llista!=null) {
+            for (Accio accio : llista) {
+                if (accio != null) { // Add null check here
+                    str += "AccioNumero: " + i++ + "=\n";
+                    str += accio.toString() + "\n";
+                }
+            }
+        } else {
+            str = "No hi ha cap accio";
+        }
+        return str;
     }
     
 
