@@ -10,7 +10,7 @@ import Llistes.LlistaAssociacions;
 import Classes.*;
 
 /**
- * @author Yeray Zarza
+ * @author Yeray Zarza, Marc Badia
  */
 
 public class LlistaAccionsText {

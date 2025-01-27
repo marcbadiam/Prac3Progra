@@ -13,11 +13,14 @@ public class Accio {
     protected String titol;
     protected String responsable;
     protected LlistaAssociacionsSerial llistaAss = new LlistaAssociacionsSerial();
+    
     int[] posicionsAssociacions;
+
+
 
     public Accio(String t, String r, int[] posicionsAssociacions) {//String = "1;4;5"
         //this.llistaAss = new LlistaAssociacionsSerial();
-        //this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
+        this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
         codi = generarCodi(); 
         titol = t; 
         responsable = r; 
@@ -37,6 +40,7 @@ public class Accio {
 
 
     public String generarCodi(){
+
         String digits = ""; 
         for (int i = 0; i < llistaAss.getNomAssociacioPosicio(0).length() && i<3; i++) {
             char c = llistaAss.getNomAssociacioPosicio(0).charAt(i); 
