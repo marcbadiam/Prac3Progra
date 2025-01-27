@@ -20,8 +20,10 @@ public class Accio {
 
     public Accio(String t, String r, int[] posicionsAssociacions) {//String = "1;4;5"
         //this.llistaAss = new LlistaAssociacionsSerial();
-        this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
-        codi = generarCodi(); 
+        //this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
+        //codi = generarCodi(); 
+        //falta associar les associacions amb les accions per gaurdar els reesponsables i generar el codi
+        codi = "arreglar";
         titol = t; 
         responsable = r; 
     }
@@ -45,8 +47,8 @@ public class Accio {
         for (int i = 0; i < llistaAss.getNomAssociacioPosicio(0).length() && i<3; i++) {
             char c = llistaAss.getNomAssociacioPosicio(0).charAt(i); 
             digits += c; 
-        }
-        llistaAss.incrementarNombreAccionsPosicio(0);
+        }//arreglar
+        //llistaAss.incrementarNombreAccionsPosicio(0);
         int val = 99+llistaAss.getNumAccionsPosicio(0);
         digits += val;
         return digits;
