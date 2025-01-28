@@ -12,7 +12,6 @@ public class Accio {
     protected String titol;
     protected String responsable;
     protected LlistaAssociacionsSerial llistaAss = new LlistaAssociacionsSerial();
-    
     int[] posicionsAssociacions;
 
 
@@ -66,6 +65,16 @@ public class Accio {
     public Accio copia(){
         Accio copiaAccio = new Accio(titol, responsable, posicionsAssociacions);
         return copiaAccio;
+    }
+
+    public boolean esDAssociacio(String nomAssociacio){
+       boolean trobat = false;
+       for(int i = 0; i < llistaAss.getNElem(); i++){
+        if(llistaAss.getNomAssociacioPosicio(i).equals(nomAssociacio)){
+            trobat = true;
+        }
+       }
+        return trobat;
     }
 
 }

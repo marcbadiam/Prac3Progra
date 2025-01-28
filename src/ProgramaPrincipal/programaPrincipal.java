@@ -5,6 +5,7 @@ import Classes.Accio;
 import Classes.Alumnes;
 import Classes.Associacio;
 import Classes.Data;
+import Classes.Demostracio;
 import Classes.Professors;
 import Classes.Xerrada;
 import Classes.Membres;
@@ -147,23 +148,149 @@ public class programaPrincipal {
                     break;
                 case 4:
                     System.out.println("\nHeu escollit:");
-                    System.out.println("4. Mostrar les dades de la llista d’accions (afegint filtre o no per tipus d’acció):\n\n");
-                    
+                    System.out.println("4. Mostrar les dades de la llista d’accions (afegint filtre o no per tipus d’acció):\n");
+
+                    // Solicitar l'opció de filtratge
+                    System.out.println("Si vols mostrar només Xerrades, escriu 1. Si vols mostrar només Demostracions, escriu 0. Si vols mostrar ambdós, escriu -1:\n");
+                    int opcioMostrar2 = teclat.nextInt();
+
+                    // Crear i carregar la llista d'accions
+                    LlistaAccionsText llistaAccions = new LlistaAccionsText();
+                    llistaAccions.carregarAccions();
+
+                    // Filtrar segons l'opció seleccionada
+                    if (opcioMostrar2 == 1) {
+                        System.out.println("Llista de Xerrades:");
+                        for (int i = 0; i < llistaAccions.getNumAccions(); i++) {
+                            Accio accio = llistaAccions.getAccio(i);
+                            if (accio instanceof Xerrada) { // Comprovar si és una Xerrada
+                                System.out.println(accio); // Mostrar la xerrada
+                            }
+                        }
+                    } else if (opcioMostrar2 == 0) {
+                        System.out.println("Llista de Demostracions:");
+                        for (int i = 0; i < llistaAccions.getNumAccions(); i++) {
+                            Accio accio = llistaAccions.getAccio(i);
+                            if (accio instanceof Demostracio) { // Comprovar si és una Demostració
+                                System.out.println(accio); // Mostrar la demostració
+                            }
+                        }
+                    } else if (opcioMostrar2 == -1) {
+                        System.out.println("Llista de totes les accions:");
+                        for (int i = 0; i < llistaAccions.getNumAccions(); i++) {
+                            System.out.println(llistaAccions.getAccio(i)); // Mostrar totes les accions
+                        }
+                    } else {
+                        System.out.println("Opció no vàlida.");
+                    }
                     break;
                 case 5:
-                    System.out.println("\nHeu escollit:");
-                    System.out.println("5. Obtenir i mostrar la llista d’accions que ofereix una associació concreta:\n");
-                    //Yeray
-                    break;
+                System.out.println("\nHeu escollit:");
+                System.out.println("5. Obtenir i mostrar la llista d’accions que ofereix una associació concreta:\n");
+                
+                // Sol·licitar el nom de l'associació
+                System.out.println("Introdueix el nom de l'associació: ");
+                String nomAssociacio1 = teclat.nextLine().trim();
+                
+                // Sol·licitar l'opció de filtratge
+                System.out.println("Si vols mostrar només Xerrades, escriu 1. Si vols mostrar només Demostracions, escriu 0. Si vols mostrar ambdós, escriu -1:\n");
+                int opcioMostrar4 = teclat.nextInt();
+                
+                // Crear i carregar la llista d'accions
+                LlistaAccionsText llistaAccions1 = new LlistaAccionsText();
+                llistaAccions1.carregarAccions();
+                
+                // Filtrar per nom d'associació i tipus d'acció
+                System.out.println("Accions disponibles per a l'associació \"" + nomAssociacio1 + "\":");
+                boolean accionsTrobades = false; // Per comprovar si hi ha resultats
+                
+                for (int i = 0; i < llistaAccions1.getNumAccions(); i++) {
+                    Accio accio = llistaAccions1.getAccio(i);
+                    
+                    // Comprovar si l'acció pertany a l'associació
+                    if (accio.esDAssociacio(nomAssociacio1)) { 
+                        if (opcioMostrar4 == 1 && accio instanceof Xerrada) {
+                            System.out.println(accio); // Mostrar només Xerrades
+                            accionsTrobades = true;
+                        } else if (opcioMostrar4 == 0 && accio instanceof Demostracio) {
+                            System.out.println(accio); // Mostrar només Demostracions
+                            accionsTrobades = true;
+                        } else if (opcioMostrar4 == -1) {
+                            System.out.println(accio); // Mostrar totes les accions
+                            accionsTrobades = true;
+                        }
+                    }
+                }
+                
+                // Si no s'han trobat accions, mostrar un missatge
+                if (!accionsTrobades) {
+                    System.out.println("No s'han trobat accions per a l'associació \"" + nomAssociacio1 + "\" amb el filtre seleccionat.");
+                }
+
+                break;
                 case 6:
-                    System.out.println("\nHeu escollit:");
-                    System.out.println("6. Obtenir i mostrar la llista de les xerrades que es duen a terme en una franja de dates indicada per teclat:\n\n");
-                    //
-                    break;
+                System.out.println("\nHeu escollit:");
+                System.out.println("6. Obtenir i mostrar la llista de les xerrades que es duen a terme en una franja de dates indicada per teclat:\n\n");
+
+                // Demanar les dates d'inici i final
+                System.out.println("Introdueix la data d'inici (format: dd mm aaaa):");
+                int diaInici = teclat.nextInt();
+                int mesInici = teclat.nextInt();
+                int anyInici = teclat.nextInt();
+                Data dataInici = new Data(diaInici, mesInici, anyInici);
+
+                System.out.println("Introdueix la data de finalització (format: dd mm aaaa):");
+                int diaFi = teclat.nextInt();
+                int mesFi = teclat.nextInt();
+                int anyFi = teclat.nextInt();
+                Data dataFi = new Data(diaFi, mesFi, anyFi);
+
+                // Crear i carregar la llista d'accions
+                LlistaAccionsText llistaAccions2 = new LlistaAccionsText();
+                llistaAccions2.carregarAccions();
+
+                // Verificar xerrades dins la franja de dates
+                System.out.println("Xerrades dins la franja de dates:");
+                for (int i = 0; i < llistaAccions2.getNumAccions(); i++) {
+                    Accio accio = llistaAccions2.getAccio(i);
+                    if (accio instanceof Xerrada) { 
+                        Xerrada xerrada = (Xerrada) accio; 
+
+                        Data dataXerrada = xerrada.getDataXerrada();
+
+                        // Comprovem si la data de la xerrada està dins la franja
+                        if (dataXerrada.esDataInferiorOigual(dataFi) && dataXerrada.esDataInferiorOigual(dataInici)) {
+                            System.out.println(xerrada); // Mostrem la xerrada
+                        }
+                    }
+                }
+                break;
+
                 case 7:
                     System.out.println("\nHeu escollit:");
-                    System.out.println("7. Afegir una nova associació:\n\n");
-                    //
+                    System.out.println("7. Afegir una nova associació:\n\n")
+
+                    // Capturar les dades de l'associació
+                    System.out.println("Nom de l'associació: ");
+                    String nomAssociacio3 = scanner.nextLine();
+
+                    System.out.println("Email de contacte: ");
+                    String emailContacte = scanner.nextLine();
+
+                    System.out.println("Introduir el president: ");
+                    String president = scanner.nextLine();
+
+                    System.out.println("Introduir el secretari: ");
+                    String secretari = scanner.nextLine();
+
+                    System.out.println("Introduir el tresorer: ");
+                    String tresorer = scanner.nextLine();
+
+                    System.out.println("Nombre d'accions: ");
+                    int nombreAccions = scanner.nextInt();
+
+                    
+                    
                     break;
                 case 8:
                     System.out.println("\nHeu escollit:");
