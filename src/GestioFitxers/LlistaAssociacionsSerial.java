@@ -88,7 +88,35 @@ public class LlistaAssociacionsSerial {
     public int getNElem() {
         return nElem;
     }
+    public void guardarAssociacions() throws IOException {
+        try (ObjectOutputStream outputfile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("associacions.bin")))) {
+            for (Associacio associacio : llista) {
+                outputfile.writeObject(associacio);
+            }
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("El fitxer no existeix");
+        }
+    }
 
+    public void carregarAssociacions() throws IOException{
+        try (ObjectInputStream inputfile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("associacions.bin")))) {
+            Associacio associacio;
+            while ((associacio = (Associacio) inputfile.readObject()) != null) {
+                afegirAssoc(associacio);
+            }
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("El fitxer no existeix");
+        }
+        catch(EOFException e) {
+            System.out.println("Fitxer carregat correctament");
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Classe no trobada");
+        }
+    }
+/* 
     public void carregarAssociacions() {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
@@ -116,7 +144,7 @@ public class LlistaAssociacionsSerial {
         } catch (IOException e) {
             System.out.println("No es pot guardar el fitxer: " + e.getMessage());
         }
-    }
+    }*/
     public String toString(){
         String str = "";
         int i=0;
@@ -158,7 +186,7 @@ public class LlistaAssociacionsSerial {
      * Mètode per carregar les associacions des del fitxer en les posicions especificades i emmagatzemar-les en una llista.
      * @param posicions un array d'enters que conté les línies del fitxer a extreure.
      * @return una llista d'associacions.
-     */
+     
     public LlistaAssociacionsSerial carregarPosicionsAssociacions(int[] posicions) {
         LlistaAssociacionsSerial llistaAssociacions = new LlistaAssociacionsSerial();
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
@@ -187,5 +215,5 @@ public class LlistaAssociacionsSerial {
             System.out.println("Error en el format numèric: " + e.getMessage());
         }
         return llistaAssociacions;
-    }
+    }*/
 }

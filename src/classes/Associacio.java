@@ -1,10 +1,14 @@
 package Classes;
 
+import java.io.Serializable;
+
 /**
  * @author Núria Yepes Castro
  */
 
-public class Associacio {
+public class Associacio implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private String nomAssociacio;
     private String emailContacte;
     private String[] titulacions;

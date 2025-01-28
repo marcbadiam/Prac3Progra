@@ -1,5 +1,6 @@
 package ProgramaPrincipal;
 import java.util.Scanner;
+import java.io.IOException;
 
 import Classes.Accio;
 import Classes.Alumnes;
@@ -53,8 +54,12 @@ public class programaPrincipal {
                     System.out.println("\nHeu escollit:");
                     System.out.println("1.Mostrar les dades de la llista d'associacions):\n\n");
                     LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
-                    llistaCarregada1.carregarAssociacions();
-                    System.out.println(llistaCarregada1.toString());
+                    try {
+                        llistaCarregada1.carregarAssociacions();
+                        System.out.println(llistaCarregada1.toString());
+                    } catch (IOException e) {
+                        System.out.println("Error carregant les associacions: " + e.getMessage());
+                    }
                     break;
                 case 2:
                     System.out.println("\nHeu escollit:");
@@ -173,6 +178,69 @@ public class programaPrincipal {
                 case 18:
                     System.out.println("\nHeu escollit:");
                     System.out.println("18. Sortir de l'aplicacio. Fins la propera!");
+                    break;
+                case 25:
+                    System.out.println("\n!!!!!!!!!!!:");
+                    System.out.println("25. Comprovació LlistaAssociacionsSerial!\n");
+
+                    LlistaAssociacionsSerial llistaTest = new LlistaAssociacionsSerial();
+
+                    String[] titulacionsTest1 = {"GEB", "GEI"};
+                    String[] membresTest1 = {"Membre1", "Membre2", "Membre3"};
+                    Associacio assocTest1 = new Associacio("AssociacióTest1", "test1@example.com", titulacionsTest1, membresTest1, "President1", "Secretari1", "Tresorer1", 3, 0);
+                    String[] titulacionsTest2 = {"GEB", "GESST"};
+                    String[] membresTest2 = {"Membre4", "Membre5", "Membre6"};
+                    Associacio assocTest2 = new Associacio("AssociacióTest2", "test2@example.com", titulacionsTest2, membresTest2, "President2", "Secretari2", "Tresorer2", 3, 0);
+
+                    llistaTest.afegirAssoc(assocTest1);
+                    llistaTest.afegirAssoc(assocTest2);
+
+                    System.out.println("Llista d'associacions després d'afegir:");
+                    System.out.println(llistaTest.toString());
+
+                    llistaTest.eliminarAssoc("AssociacióTest1");
+
+                    System.out.println("Llista d'associacions després d'eliminar:");
+                    System.out.println(llistaTest.toString());
+
+                    try {
+                        llistaTest.guardarAssociacions();
+                        System.out.println("Associacions guardades correctament.");
+                    } catch (IOException e) {
+                        System.out.println("Error guardant les associacions: " + e.getMessage());
+                    }
+
+                    LlistaAssociacionsSerial llistaCarregadaTest = new LlistaAssociacionsSerial();
+                    try {
+                        llistaCarregadaTest.carregarAssociacions();
+                        System.out.println("Associacions carregades correctament.");
+                    } catch (IOException e) {
+                        System.out.println("Error carregant les associacions: " + e.getMessage());
+                    }
+
+                    System.out.println("Llista d'associacions carregades:");
+                    System.out.println(llistaCarregadaTest.toString());
+
+                    if (llistaCarregadaTest.equals(llistaTest)) {
+                        System.out.println("Les dues llistes són iguals i per tant la serialització ha funcionat correctament.");
+                    } else {
+                        System.out.println("Les dues llistes no són iguals i per tant la serialització no ha funcionat correctament.");
+                    }
+                    break;
+                case 26:
+                    System.out.println("\n!!!!!!!!!!!:");
+                    System.out.println("26. Mostrar el contingut del fitxer creat en el case 25!\n");
+
+                    LlistaAssociacionsSerial llistaCarregada26 = new LlistaAssociacionsSerial();
+                    try {
+                        llistaCarregada26.carregarAssociacions();
+                        System.out.println("Associacions carregades correctament.");
+                    } catch (IOException e) {
+                        System.out.println("Error carregant les associacions: " + e.getMessage());
+                    }
+
+                    System.out.println("Llista d'associacions carregades:");
+                    System.out.println(llistaCarregada26.toString());
                     break;
                 case 30:
                     System.out.println("\n!!!!!!!!!!!:");
@@ -298,10 +366,10 @@ public class programaPrincipal {
 
                     //part serialitzada
 
-                    llista.guardarAssociacions();
+                    //llista.guardarAssociacions();
                     
                     LlistaAssociacionsSerial llistaCarregada = new LlistaAssociacionsSerial();
-                    llistaCarregada.carregarAssociacions();
+                    //llistaCarregada.carregarAssociacions();
 
                     System.out.println("Llista Associacions Carregades:");
                     System.out.println(llistaCarregada.toString());

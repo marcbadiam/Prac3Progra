@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Classes.*;
 import GestioFitxers.*;
+import java.io.IOException;
 
 public class AppInterficieGrafica extends JFrame {
     private LlistaAccionsText llistaAccions;
@@ -67,7 +68,12 @@ public class AppInterficieGrafica extends JFrame {
     private void mostrarDemostracions() {
         System.out.println("ENTRE   AQUIIIIIIIIIIIIII");
         LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
-        llistaCarregada1.carregarAssociacions();
+        try {
+            llistaCarregada1.carregarAssociacions();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error carregant associacions: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
         System.out.println("Y AQUIIIIIIIIIIIIII");
         textArea.setText("");
         LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
@@ -111,7 +117,12 @@ public class AppInterficieGrafica extends JFrame {
         LlistaAccionsText llistaAccions = new LlistaAccionsText();
 
         // Afegir entitats i activitats (exemple)
-        llistaAssociacions.carregarAssociacions();
+        try {
+            llistaAssociacions.carregarAssociacions();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error carregant associacions: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
         llistaAccions.carregarAccions();
 
         // Crear i mostrar la interfície gràfica
