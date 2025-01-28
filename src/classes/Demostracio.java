@@ -1,7 +1,5 @@
 package Classes;
 
-import Llistes.LlistaAssociacions;
-
 /**
  * @author Pol Caballé
  */

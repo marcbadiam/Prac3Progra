@@ -1,6 +1,5 @@
 package Classes;
 
-import Llistes.LlistaAssociacions;
 
 /**
  * @author Marc Badia
@@ -58,6 +57,16 @@ public class Xerrada extends Accio {
             this.codi, this.titol, this.responsable, 
             this.nAssistents, this.dataXerrada, this.valida, this.valoracions, this.cost, this.posicionsAssociacions);
         return copiaXerrada;
+    }
+
+    public boolean esMembre(String aliesId){
+        boolean esMembre = false;
+        for(int i = 0; i < nMembres -1; i++){
+            if(membres[i].getAliesId().equals(aliesId)){
+                esMembre =  true;
+            }
+        }
+        return esMembre;
     }
 
     public String toString() {

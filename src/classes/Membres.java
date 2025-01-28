@@ -15,9 +15,6 @@ import Llistes.LlistaAssociacions;
  */
 
  public abstract class Membres {
-    private String[] membres;
-    private int nombreMemebres;
-    private static final int MAX_MEMBRES = 200;
     private Data dataAlta;
     private Data dataBaixa;
     private boolean professor;
@@ -29,14 +26,12 @@ import Llistes.LlistaAssociacions;
     /**
      * Constructor per defecte
      */
-    public Membres(String aliesID, String correu, boolean professor) {
-        this.membres = new String[MAX_MEMBRES]; 
-        this.nombreMemebres = 0; 
+    public Membres(String aliesID, String correu, boolean professor, Data dataAlta, Data dataBaixa) {
         this.dataAlta = null; 
         this.dataBaixa = null;
         this.professor = false; 
-        this.aliesId = ""; 
-        this.correu = "";
+        this.aliesId = aliesID; 
+        this.correu = correu;
         this.associacions = null;
         this.numAssociacions = 0; 
     }
@@ -131,6 +126,11 @@ import Llistes.LlistaAssociacions;
     public void setNumAssociacions(int numAssociacions) {
         this.numAssociacions = numAssociacions;
     }
+
+    public boolean esDAquestaAssociacio(String nomAssociacio){
+        boolean esAssociacio = associacions.conteAssociacio(nomAssociacio);
+        return esAssociacio;
+    }
     
     public String toString() {
         return "Membres [dataAlta=" + dataAlta + ", dataBaixa=" + dataBaixa + ", professor=" + professor + ", aliesId="
@@ -144,46 +144,7 @@ import Llistes.LlistaAssociacions;
      * @return True si el membre és un professor, false en cas contrari.
      */
     public boolean isProfessor() {
-        
         return professor;
-    }
-
-    /**
-     * Mètode per afegir un nou membre a la associacio
-     * @param membre persona interessada que es vol afegir 
-     */
-    public void afegirMembres(String membre){
-        if(nombreMemebres < MAX_MEMBRES){
-            membres[nombreMemebres] = membre;
-            nombreMemebres++;  
-        }else{
-            System.out.println("Ho sentim. No es poden afegir mes membres, no hi ha places disponibles\n");
-        }
-    }
-
-    /**
-     * Mètode per eliminar un membre de la associació
-     * @param membre persona que es vol eliminar
-     */
-    public void eliminarMembres(String membre){
-        for(int i=0; i<nombreMemebres; i++){
-            if (membres[i].equals(membre)) {
-                membres[i] = membres[nombreMemebres-1];     //Movem l'ultim membre de la posició eliminada per no tenir espais lliures
-                membres[nombreMemebres-1] = null;
-                nombreMemebres--;
-                break;
-            }
-        }
-    }
-
-    /**
-     * Mètode per obtenir els membres de l'associacio
-     * @return membres actuals de l'associacio
-     */
-    public String[] obtenirMembres(){
-        String[] membresActuals = new String[nombreMemebres];
-        System.arraycopy(membres, MAX_MEMBRES, membresActuals, 0, nombreMemebres);
-        return membresActuals;
     }
 
     

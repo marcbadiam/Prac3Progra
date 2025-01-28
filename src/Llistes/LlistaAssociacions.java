@@ -77,6 +77,22 @@ public class LlistaAssociacions {
         }
     }
 
+    /**
+    * Comprova si existeix una associació amb un nom concret dins de la llista.
+    * 
+    * @param nomAssoc El nom de l'associació a buscar.
+    * @return True si l'associació existeix, False en cas contrari.
+    */
+    public boolean conteAssociacio(String nomAssoc) {
+    boolean conteAssociacio = false;
+    for (int i = 0; i < nElem; i++) {
+        if (llista[i] != null && llista[i].getNomAssociacio().equalsIgnoreCase(nomAssoc)) {
+            conteAssociacio = true;
+        }
+    }
+    return conteAssociacio;
+    }
+
     public int getNElem() {
         return nElem;
     }
