@@ -29,7 +29,7 @@ public class LlistaAccionsText {
 
     public void afegirAccio(Accio ac) {
         if (nElem < llista.length) {
-            llista[nElem] = ac.copia();
+            llista[nElem] = ac;
             nElem++;
             System.out.println("Acció afegida: " + ac.getTitol());
             System.out.println("Nombre d'elements actual: " + nElem);

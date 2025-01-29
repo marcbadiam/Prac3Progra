@@ -21,7 +21,8 @@ public class Accio {
         //this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
         //codi = generarCodi(); 
         //falta associar les associacions amb les accions per gaurdar els reesponsables i generar el codi
-        codi = "arreglar";
+        //codi = generarCodi();
+        codi = "a";
         titol = t; 
         responsable = r; 
 

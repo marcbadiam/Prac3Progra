@@ -526,14 +526,17 @@ public class programaPrincipal {
                     llistaAssociacions51.afegirAssoc(associacio51);
                     System.out.println("Arriba aqui! 185");
                     LlistaAccionsText llistaAccions3 = new LlistaAccionsText();
-                    
-                    //Accio accio1 = new Accio("Accio1", "Jaume", llistaAssociacions51);
-                    //Accio accio2 = new Accio("Accio2", "Miquel", llistaAssociacions51);
-                    //llistaAccions.afegirAccio(accio1);
-                    //llistaAccions.afegirAccio(accio2);
-                    System.out.println("Arriba aqui! 192");
-                    llistaAccions3.carregarAccions();
-                    System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    System.out.println("Arriba 529");
+                    int[] pos26 = {1};
+                    Accio accio1 = new Accio("Accio1", "Jaume", pos26);
+                    Accio accio2 = new Accio("Accio2", "Miquel", pos26);
+
+                    llistaAccions3.afegirAccio(accio1);
+
+                    llistaAccions3.afegirAccio(accio2);
+
+                    //llistaAccions3.carregarAccions();
+            
                     System.out.println("Detalls de la Llista d'Accions:");
                     System.out.println(llistaAccions3.toString());
 
