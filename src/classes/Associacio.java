@@ -35,6 +35,7 @@ public class Associacio implements Serializable {
         this.presidentAssociacio = presidentAssociacio;
         this.secretariAssociacio = secretariAssociacio;
         this.tresorerAssociacio = tresorerAssociacio;
+        //this.nombreMemebres = nombreMemebres;
     }
 
     /**

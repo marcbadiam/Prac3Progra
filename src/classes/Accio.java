@@ -24,6 +24,8 @@ public class Accio {
         codi = "arreglar";
         titol = t; 
         responsable = r; 
+
+        llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
     }
 
     public String getCodi(){
@@ -38,6 +40,9 @@ public class Accio {
         return responsable;
     }
 
+    public LlistaAssociacionsSerial getLlistaAss(){
+        return llistaAss;
+    }
 
     public String generarCodi(){
 
