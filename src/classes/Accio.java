@@ -21,12 +21,12 @@ public class Accio {
         //this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
         //codi = generarCodi(); 
         //falta associar les associacions amb les accions per gaurdar els reesponsables i generar el codi
-        //codi = generarCodi();
-        codi = "a";
+        codi = generarCodi();
         titol = t; 
         responsable = r; 
+        this.posicionsAssociacions = posicionsAssociacions;
 
-        llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
+        llistaAss = llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
     }
 
     public String getCodi(){
@@ -65,6 +65,7 @@ public class Accio {
                 ", titol='" + titol + '\'' +
                 ", responsable='" + responsable + '\'' +
                 ", nAssoc organitzadores=" + llistaAss.getNElem() +
+                ", posicionsAssociacions0='" + posicionsAssociacions[0] + '\'' +
                 '}';
     }
 

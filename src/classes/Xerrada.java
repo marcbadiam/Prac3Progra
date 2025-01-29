@@ -75,7 +75,7 @@ public class Xerrada extends Accio {
         + ", responsable=" + responsable
         + ", dataXerrada=" + dataXerrada
         + ", nAssistents=" + nAssistents 
-        + ", valoracions=" + valoracions + "]";
+        + ", valoracions=" + valoracions + super.toString() +"]";
     }
     
 }

@@ -34,4 +34,12 @@ public class Demostracio extends Accio {
         return cost;
     }
 
-}
+    public String toString() {
+        return "Demostracio [codi=" + codi 
+        + ", titol=" + titol 
+        + ", responsable=" + responsable
+        + ", dataDemostracio" + dataDisseny
+        + super.toString() + "]";
+    }
+
+}//+ ", nAssociacionsOrganitzadores=" + super.posicionsAssociacions.length 

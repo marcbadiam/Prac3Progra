@@ -453,6 +453,19 @@ public class programaPrincipal {
 
 
                     break;  
+                case 24:
+                    System.out.println("Mostrar associacions.bin");
+                    LlistaAssociacionsSerial mostrar = new LlistaAssociacionsSerial();
+                    try {
+                        mostrar.carregarAssociacions();
+                        System.out.println("Associacions carregades correctament.");
+                    } catch (IOException e) {
+                        System.out.println("Error carregant les associacions: " + e.getMessage());
+                    }
+
+                    System.out.println(mostrar.toString());
+                    break;
+
                 case 25:
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("25. Comprovació LlistaAssociacionsSerial!\n");
@@ -516,7 +529,7 @@ public class programaPrincipal {
                     System.out.println("Llista d'associacions carregades:");
                     System.out.println(llistaCarregada26.toString());
                     break;
-                case 30:
+                case 30: //Faig llista d'accions
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("18. Comprovacio AccionsText!");
                     LlistaAssociacions llistaAssociacions51 = new LlistaAssociacions();
@@ -527,13 +540,17 @@ public class programaPrincipal {
                     System.out.println("Arriba aqui! 185");
                     LlistaAccionsText llistaAccions3 = new LlistaAccionsText();
                     System.out.println("Arriba 529");
-                    int[] pos26 = {1};
-                    Accio accio1 = new Accio("Accio1", "Jaume", pos26);
-                    Accio accio2 = new Accio("Accio2", "Miquel", pos26);
+                    int[] pos1 = {1};
+                    int[] pos2 = {2};
+                    Data data1 = new Data(); 
+                    short valor = 20;
+                    //Accio accio1 = new Accio("Accio1", "Jaume", pos1);
+                    //Accio accio2 = new Accio("Accio2", "Miquel", pos2);
+                    Demostracio demo1 = new Demostracio("secretari", "titol", "responsable", 10, data1, true, valor , 100, pos2);
+                    Xerrada xerra1 = new Xerrada("secretari", "titol", "responsable", 10, data1, true, valor , 100, pos1);
+                    llistaAccions3.afegirAccio(demo1);
 
-                    llistaAccions3.afegirAccio(accio1);
-
-                    llistaAccions3.afegirAccio(accio2);
+                    llistaAccions3.afegirAccio(xerra1);
 
                     //llistaAccions3.carregarAccions();
             
