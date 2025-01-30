@@ -12,13 +12,11 @@ import LlistesGestioFitxers.*;
 import java.io.IOException;
 
 public class AppInterficieGrafica extends JFrame {
-    private LlistaAccionsText llistaAccions;
     private LlistaAssociacionsSerial llistaAssociacions;
     private JTextArea textArea;
     private List<JCheckBox> checkBoxes;
 
     public AppInterficieGrafica(LlistaAccionsText llistaAccions, LlistaAssociacionsSerial llistaAssociacions) {
-        this.llistaAccions = llistaAccions;
         this.llistaAssociacions = llistaAssociacions;
         initialize();
     }
