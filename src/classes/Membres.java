@@ -27,8 +27,8 @@ import LlistesGestioFitxers.LlistaAssociacionsSerial;
      * Constructor per defecte
      */
     public Membres(String aliesID, String correu, boolean professor, Data dataAlta, Data dataBaixa) {
-        this.dataAlta = null; 
-        this.dataBaixa = null;
+        this.dataAlta = dataAlta; 
+        this.dataBaixa = dataBaixa;
         this.professor = false; 
         this.aliesId = aliesID; 
         this.correu = correu;
