@@ -1,10 +1,12 @@
 package Classes;
 
+import java.time.LocalDate;
 
 /**
+ * Classe que representa una xerrada.
+ * 
  * @author Marc Badia
  */
-
 public class Xerrada extends Accio {
     
     private static short nMembres = 3;
@@ -16,15 +18,30 @@ public class Xerrada extends Accio {
     private int[] posicionsAssociacions;
     private int cost;
 
-    public Xerrada(String c, String t, String r, int nAssistents, Data d, boolean valida, short valoracions, int cost, int[] posicionsAssociacions) {
+    public Xerrada(String c, String t, String r, int nAssistents, Data d, short valoracions, int cost, int[] posicionsAssociacions) {
         super(t, r, posicionsAssociacions);
         this.nAssistents = nAssistents;
         this.valoracions = valoracions;
         this.posicionsAssociacions = posicionsAssociacions;
-        this.valida = valida;
+        this.dataXerrada = d;
+        this.cost = cost;
+        this.valida = esValida(); // Decideix si és vàlida segons la data
     }
 
-    public void setNMembres (short n) {
+    public boolean esValida() {
+        boolean valida;
+
+        LocalDate dataActual = LocalDate.now();
+        Data dataA = new Data(dataActual.getDayOfMonth(), dataActual.getMonthValue(), dataActual.getYear());
+        
+        if (dataA.esDataInferiorOigual(dataXerrada))
+            valida = true;
+        else
+            valida = false;
+        return valida;
+    }
+
+    public void setNMembres(short n) {
         nMembres = n;
     }
 
@@ -52,30 +69,31 @@ public class Xerrada extends Accio {
         this.valoracions = valoracions;
     }
 
-    public Xerrada copia(){
-        Xerrada copiaXerrada = new Xerrada(
+    public Xerrada copia() {
+        return new Xerrada(
             this.codi, this.titol, this.responsable, 
-            this.nAssistents, this.dataXerrada, this.valida, this.valoracions, this.cost, this.posicionsAssociacions);
-        return copiaXerrada;
+            this.nAssistents, this.dataXerrada, this.valoracions, this.cost, this.posicionsAssociacions
+        );
     }
 
-    public boolean esMembre(String aliesId){
-        boolean esMembre = false;
-        for(int i = 0; i < nMembres -1; i++){
-            if(membres[i].getAliesId().equals(aliesId)){
-                esMembre =  true;
+    public boolean esMembre(String aliesId) {
+        for (int i = 0; i < nMembres; i++) {
+            if (membres[i] != null && membres[i].getAliesId().equals(aliesId)) {
+                return true;
             }
         }
-        return esMembre;
+        return false;
     }
 
+
+    @Override
     public String toString() {
         return "Xerrada [codi=" + codi 
-        + ", titol=" + titol 
-        + ", responsable=" + responsable
-        + ", dataXerrada=" + dataXerrada
-        + ", nAssistents=" + nAssistents 
-        + ", valoracions=" + valoracions + super.toString() +"]";
+            + ", titol=" + titol 
+            + ", responsable=" + responsable
+            + ", dataXerrada=" + dataXerrada
+            + ", nAssistents=" + nAssistents 
+            + ", valoracions=" + valoracions
+            + ", valida=" + valida + "]";
     }
-    
 }

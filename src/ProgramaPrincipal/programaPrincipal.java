@@ -547,7 +547,7 @@ public class programaPrincipal {
                     //Accio accio1 = new Accio("Accio1", "Jaume", pos1);
                     //Accio accio2 = new Accio("Accio2", "Miquel", pos2);
                     Demostracio demo1 = new Demostracio("secretari", "titol", "responsable", 10, data1, true, valor , 100, pos2);
-                    Xerrada xerra1 = new Xerrada("secretari", "titol", "responsable", 10, data1, true, valor , 100, pos1);
+                    Xerrada xerra1 = new Xerrada("secretari", "titol", "responsable", 10, data1, valor , 100, pos1);
                     llistaAccions3.afegirAccio(demo1);
 
                     llistaAccions3.afegirAccio(xerra1);

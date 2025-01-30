@@ -138,7 +138,7 @@ public class LlistaAccionsText {
                 Accio ac = new Accio(titol, responsable, posicions);
                 
                 if (esDemostracio == 0) {
-                    ac = new Xerrada(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
+                    ac = new Xerrada(codi, titol,  responsable, n, data, nVegVal, cost, posicions);
                 } else {
                     ac = new Demostracio(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
                 }
