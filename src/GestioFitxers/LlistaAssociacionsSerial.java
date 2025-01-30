@@ -69,8 +69,13 @@ public class LlistaAssociacionsSerial {
 
     public int getNumAccionsPosicio(int n) {
         if (n >= 0 && n < nElem && llista[n] != null) {
+            System.out.println("AQUIIIII SIIIIIi");
+            System.out.println("n: "+n+ "\n nElem: "+nElem);
+            System.out.println(llista[n].getNombreAccions());
             return llista[n].getNombreAccions();
         } else {
+            System.out.println("AQUIIIII");
+            System.out.println("n: "+n+ "\n nElem: "+nElem);
             return 0;
         }
     }

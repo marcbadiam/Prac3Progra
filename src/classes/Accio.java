@@ -21,13 +21,14 @@ public class Accio {
         //this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
         //codi = generarCodi(); 
         //falta associar les associacions amb les accions per gaurdar els reesponsables i generar el codi
-        codi = generarCodi();
+        
         //codi = "";
         titol = t; 
         responsable = r; 
         this.posicionsAssociacions = posicionsAssociacions;
 
         llistaAss = llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
+        codi = generarCodi();
     }
 
     public String getCodi(){

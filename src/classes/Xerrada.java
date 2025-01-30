@@ -94,6 +94,6 @@ public class Xerrada extends Accio {
             + ", dataXerrada=" + dataXerrada
             + ", nAssistents=" + nAssistents 
             + ", valoracions=" + valoracions
-            + ", valida=" + valida + "]";
+            + ", valida=" + valida + ", Super=" + super.toString() +"]";
     }
 }
