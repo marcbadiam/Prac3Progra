@@ -134,7 +134,7 @@ public class LlistaAccionsText {
                 boolean valida = Boolean.parseBoolean(camps[5]);
                 Short nVegVal = Short.parseShort(camps[6]);
                 int cost = Integer.parseInt(camps[7]);
-                posicions = new int[]{0}; //arreglar
+                //posicions = new int[]{0}; //arreglar
                 Accio ac = new Accio(titol, responsable, posicions);
                 
                 if (esDemostracio == 0) {

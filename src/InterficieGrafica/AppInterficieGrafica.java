@@ -88,7 +88,9 @@ public class AppInterficieGrafica extends JFrame {
                 for(int i=0; llistaAccionsGran.getNElem()>i; i++){
                     System.out.println("111111111111");
                     for(int j=0; llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j)!=null ; j++){
-                        if(llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j).equals(checkBox.getText())){
+                        boolean esDemo = llistaAccionsGran.getAccio(i) instanceof Demostracio;
+                        //boolean esActiu = llistaAccionsGran.getAccio(i).getActiu();
+                        if(esDemo && llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j).equals(checkBox.getText())){
                             selectedAccions.afegirAccio(llistaAccionsGran.getAccio(i));
                             System.out.println("HA ENTRAT\n\n");
                             System.out.println(llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j));
@@ -103,6 +105,8 @@ public class AppInterficieGrafica extends JFrame {
         }
 
         System.out.println(selectedAccions.toString());
+        textArea.setFont(new Font("Arial", Font.PLAIN, 24));
+        textArea.append(selectedAccions.toString() + "\n\n");
 /*
         LlistaAssociacionsSerial selectedAssociacionsComp = new LlistaAssociacionsSerial();
         for (int i=0; i<llistaAccions.getNElem(); i++){
