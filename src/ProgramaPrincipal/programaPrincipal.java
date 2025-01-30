@@ -104,11 +104,11 @@ public class programaPrincipal {
              LlistaMembresText llistaMembresProv = new LlistaMembresText();
 
              // Crear membres de prova
-             Alumnes alumne1 = new Alumnes("Al001", "alumne1@example.com", false, new Data(1, 9, 2020), new Data(1, 9, 2024),"GEI",4,llistaAssociacionsProv);
-             Alumnes alumne2 = new Alumnes("Al002", "alumne2@example.com", false, new Data(2, 9, 2020), new Data(2, 9, 2024),"GEI",3,llistaAssociacionsProv);
+             Alumnes alumne1 = new Alumnes("Al001", "alumne1@example.com", false, new Data(1, 9, 2020), new Data(1, 9, 2024),"GEI",4,llistaAssociacionsProv, true);
+             Alumnes alumne2 = new Alumnes("Al002", "alumne2@example.com", false, new Data(2, 9, 2020), new Data(2, 9, 2024),"GEI",3,llistaAssociacionsProv, false);
              Professors professor1 = new Professors("P001", "professor1@example.com", true, new Data(1, 9, 2010), new Data(1, 9, 2020),"GEI",10,llistaAssociacionsProv);
              Professors professor2 = new Professors("P002", "professor2@example.com", true, new Data(1, 9, 2015), new Data(1, 9, 2021),"GEI",5,llistaAssociacionsProv);
-             Alumnes alumne3 = new Alumnes("Al003", "alumne3@example.com", false, new Data(3, 9, 2020), new Data(3, 9, 2024),"GEI",3,llistaAssociacionsProv);
+             Alumnes alumne3 = new Alumnes("Al003", "alumne3@example.com", false, new Data(3, 9, 2020), new Data(3, 9, 2024),"GEI",3,llistaAssociacionsProv, false);
 
              // Afegir membres a la llista
              llistaMembresProv.afegirMembre(alumne1);

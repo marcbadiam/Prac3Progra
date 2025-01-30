@@ -98,7 +98,7 @@
              String linia;
              while ((linia = br.readLine()) != null) {
                  String[] camps = linia.split(";");
-                 if (camps.length == 8) {  
+                 if (camps.length == 9) {  
                      try {
                          String aliesId = camps[0];
                          String email = camps[1];
@@ -108,6 +108,7 @@
                          String dataAltaS = camps[5]; 
                          String dataBaixaS = camps[6]; 
                          String nomAssoc = camps[7];
+                         boolean graduat = Boolean.parseBoolean(camps[8]);
                          // Procesar dataAlta
                          String[] parts = dataAltaS.split("-");
                          Data dataAlta = null;
@@ -147,7 +148,7 @@
                          } else {
                              // Si es un alumno
                              if (dataAlta != null && dataBaixa != null) {
-                                 Alumnes alumne = new Alumnes(aliesId, email,esProfessor,dataAlta, dataBaixa, departamentOrEnsenyament, anys,llistaAssociacionsMembres);
+                                 Alumnes alumne = new Alumnes(aliesId, email,esProfessor,dataAlta, dataBaixa, departamentOrEnsenyament, anys,llistaAssociacionsMembres, graduat);
                                  if (nMembres < MAX_MEM) {
                                      afegirMembre(alumne);
                                  }
