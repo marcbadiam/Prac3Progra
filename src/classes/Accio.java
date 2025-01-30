@@ -22,6 +22,7 @@ public class Accio {
         //codi = generarCodi(); 
         //falta associar les associacions amb les accions per gaurdar els reesponsables i generar el codi
         codi = generarCodi();
+        //codi = "";
         titol = t; 
         responsable = r; 
         this.posicionsAssociacions = posicionsAssociacions;
@@ -48,6 +49,7 @@ public class Accio {
     public String generarCodi(){
 
         String digits = ""; 
+        System.out.println(llistaAss.getNomAssociacioPosicio(0));
         for (int i = 0; i < llistaAss.getNomAssociacioPosicio(0).length() && i<3; i++) {
             char c = llistaAss.getNomAssociacioPosicio(0).charAt(i); 
             digits += c; 

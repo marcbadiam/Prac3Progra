@@ -104,6 +104,7 @@ public class LlistaAssociacionsSerial {
             Associacio associacio;
             while ((associacio = (Associacio) inputfile.readObject()) != null) {
                 afegirAssoc(associacio);
+                nElem++;
             }
         }
         catch(FileNotFoundException e) {
