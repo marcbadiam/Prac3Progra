@@ -1,6 +1,6 @@
 package Classes;
 
-import GestioFitxers.LlistaAssociacionsSerial;
+import LlistesGestioFitxers.LlistaAssociacionsSerial;
 
 /**
  * @author Marc Badia, Pol Caballé

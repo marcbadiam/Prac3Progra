@@ -9,12 +9,11 @@ import Classes.Data;
 import Classes.Demostracio;
 import Classes.Professors;
 import Classes.Xerrada;
+import LlistesGestioFitxers.LlistaAccionsText;
+import LlistesGestioFitxers.LlistaAssociacionsSerial;
+import LlistesGestioFitxers.LlistaMembresText;
 import Classes.Membres;
-import GestioFitxers.LlistaAccionsText;
-import GestioFitxers.LlistaAssociacionsSerial;
-import Llistes.LlistaAccions;
-import Llistes.LlistaAssociacions;
-import Llistes.LlistaMembres;
+
 
 public class programaPrincipal {
     ///
@@ -78,7 +77,7 @@ public class programaPrincipal {
                 int opcioMostrar = teclat.nextInt();
                 
                 // Crear i carregar la llista de membres
-                LlistaMembres llistaMembres2 = new LlistaMembres();
+                LlistaMembresText llistaMembres2 = new LlistaMembresText();
                 llistaMembres2.carregarMembres();
                 
                 // Filtrar segons l'opció seleccionada
@@ -123,7 +122,7 @@ public class programaPrincipal {
                 int opcioMostrar1 = teclat.nextInt(); 
                 
                 // Crear i carregar la llista de membres
-                LlistaMembres llistaMembres3 = new LlistaMembres();
+                LlistaMembresText llistaMembres3 = new LlistaMembresText();
                 llistaMembres3.carregarMembres();
                 
                 // Filtrar segons l'opció seleccionada
@@ -532,7 +531,7 @@ public class programaPrincipal {
                 case 30: //Faig llista d'accions
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("18. Comprovacio AccionsText!");
-                    LlistaAssociacions llistaAssociacions51 = new LlistaAssociacions();
+                    LlistaAssociacionsSerial llistaAssociacions51 = new LlistaAssociacionsSerial();
                     String[] titulacions51 = {"GEB", "GEI", "GESST"};
                     String[] membres51 = {"Membre1", "Membre2", "Membre3"};
                     Associacio associacio51 = new Associacio("Associació de Prova", "email@example.com", titulacions51, membres51, "President", "Secretari", "Tresorer", 3, 3);
@@ -680,7 +679,7 @@ public class programaPrincipal {
                 case 60:
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("60. Comprovació professor/alumne:\n\n");
-                    LlistaMembres professorOAlumne = new LlistaMembres();
+                    LlistaMembresText professorOAlumne = new LlistaMembresText();
                     professorOAlumne.carregarMembres();
                     professorOAlumne.toString();
                     System.out.println(professorOAlumne.toString());

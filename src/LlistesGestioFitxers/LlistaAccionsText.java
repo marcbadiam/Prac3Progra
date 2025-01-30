@@ -1,4 +1,4 @@
-package GestioFitxers;
+package LlistesGestioFitxers;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import Classes.*;
 
 /**
- * @author Yeray Zarza, Marc Badia
+ * @author Yeray Zarza, Marc Badia, Pol Caballé
  */
 
 public class LlistaAccionsText {

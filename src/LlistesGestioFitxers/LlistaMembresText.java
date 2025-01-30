@@ -2,18 +2,18 @@
  * @author Núria Yepes
  */
 
- package Llistes;
+ package LlistesGestioFitxers;
 
  import Classes.*;
  import java.io.*;
  
- public class LlistaMembres {
+ public class LlistaMembresText {
      private int nMembres;
      private Membres[] llistaMembres;
      private static int MAX_MEM = 300;
      private static final String FITXER_MEMBRES = "membres.csv";
  
-     public LlistaMembres(){
+     public LlistaMembresText(){
          llistaMembres = new Membres[MAX_MEM];
          nMembres = 0;
      }
@@ -22,8 +22,8 @@
          return nMembres;
      }
  
-     public LlistaMembres copia(){
-         LlistaMembres copiaLlistaMembres = new LlistaMembres();
+     public LlistaMembresText copia(){
+         LlistaMembresText copiaLlistaMembres = new LlistaMembresText();
          copiaLlistaMembres.nMembres = this.nMembres;
          for(int i=0; i<this.nMembres; i++){
              copiaLlistaMembres.llistaMembres[i]=this.llistaMembres[i];

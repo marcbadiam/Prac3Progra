@@ -1,6 +1,6 @@
 package Classes;
 
-import Llistes.LlistaAssociacions;
+import LlistesGestioFitxers.LlistaAssociacionsSerial;
 
 /**
  * @author Núria Yepes
@@ -20,7 +20,7 @@ import Llistes.LlistaAssociacions;
     private boolean professor;
     private String aliesId;
     private String correu;
-    private LlistaAssociacions associacions;
+    private LlistaAssociacionsSerial associacions;
     private int numAssociacions;
 
     /**

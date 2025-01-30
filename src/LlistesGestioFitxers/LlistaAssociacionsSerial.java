@@ -1,4 +1,4 @@
-package GestioFitxers;
+package LlistesGestioFitxers;
 
 import java.io.*;
 //import java.util.ArrayList;
@@ -174,6 +174,22 @@ public class LlistaAssociacionsSerial {
         }
         return true;
     }
+/**
+    * Comprova si existeix una associació amb un nom concret dins de la llista.
+    * 
+    * @param nomAssoc El nom de l'associació a buscar.
+    * @return True si l'associació existeix, False en cas contrari.
+    */
+    public boolean conteAssociacio(String nomAssoc) {
+        boolean conteAssociacio = false;
+        for (int i = 0; i < nElem; i++) {
+            if (llista[i] != null && llista[i].getNomAssociacio().equalsIgnoreCase(nomAssoc)) {
+                conteAssociacio = true;
+            }
+        }
+        return conteAssociacio;
+    }
+
 
     /**
      * Mètode per obtenir una associació en una posició específica de la llista.
