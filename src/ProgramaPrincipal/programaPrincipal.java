@@ -653,7 +653,6 @@ public class programaPrincipal {
                     try {
                         llistaTestt.guardarAssociacions();
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
 

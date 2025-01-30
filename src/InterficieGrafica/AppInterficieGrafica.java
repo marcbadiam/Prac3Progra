@@ -79,7 +79,6 @@ public class AppInterficieGrafica extends JFrame {
         }
         System.out.println("Y AQUIIIIIIIIIIIIII");
         textArea.setText("");
-        LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
         LlistaAccionsText selectedAccions = new LlistaAccionsText();
         LlistaAccionsText llistaAccionsGran = new LlistaAccionsText();
         llistaAccionsGran.carregarAccions();
