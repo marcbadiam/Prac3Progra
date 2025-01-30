@@ -18,7 +18,7 @@ public class Xerrada extends Accio {
     private int[] posicionsAssociacions;
     private int cost;
 
-    public Xerrada(String c, String t, String r, int nAssistents, Data d, short valoracions, int cost, int[] posicionsAssociacions) {
+    public Xerrada(String t, String r, int nAssistents, Data d, short valoracions, int cost, int[] posicionsAssociacions) {
         super(t, r, posicionsAssociacions);
         this.nAssistents = nAssistents;
         this.valoracions = valoracions;
@@ -28,17 +28,16 @@ public class Xerrada extends Accio {
         this.valida = esValida(); // Decideix si és vàlida segons la data
     }
 
+    // Comprova si la xerrada és vàlida
     public boolean esValida() {
-        boolean valida;
-
         LocalDate dataActual = LocalDate.now();
         Data dataA = new Data(dataActual.getDayOfMonth(), dataActual.getMonthValue(), dataActual.getYear());
-        
-        if (dataA.esDataInferiorOigual(dataXerrada))
-            valida = true;
-        else
-            valida = false;
-        return valida;
+
+        if (dataA.esDataInferiorOigual(dataXerrada)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void setNMembres(short n) {
@@ -69,9 +68,12 @@ public class Xerrada extends Accio {
         this.valoracions = valoracions;
     }
 
+    public boolean getValida(){
+        return valida;
+    }
+
     public Xerrada copia() {
-        return new Xerrada(
-            this.codi, this.titol, this.responsable, 
+        return new Xerrada(this.titol, this.responsable, 
             this.nAssistents, this.dataXerrada, this.valoracions, this.cost, this.posicionsAssociacions
         );
     }

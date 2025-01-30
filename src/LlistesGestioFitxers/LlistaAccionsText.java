@@ -115,32 +115,30 @@ public class LlistaAccionsText {
             while ((linia = br.readLine()) != null) {
                 
                 String[] camps = linia.split(";");
-                if (camps.length < 10) {
+                if (camps.length < 9) {
                     System.out.println("Línia incorrecta: " + linia);
                 }
-                String codi = camps[0];
-                String titol = camps[1];
-                String responsable = camps[2];
-                String[] posicionsStr = camps[8].split(",");
+
+                String titol = camps[0];
+                String responsable = camps[1];
+                String[] posicionsStr = camps[7].split(",");
                 int[] posicions = new int[posicionsStr.length];
                 for (int i = 0; i < posicionsStr.length; i++) {
                     posicions[i] = Integer.parseInt(posicionsStr[i]);
                 }
-                int esDemostracio = Integer.parseInt(camps[9]);
-                int n = Integer.parseInt(camps[3]);
-                String[] dat = camps[4].split("-");
+                int esDemostracio = Integer.parseInt(camps[8]);
+                int n = Integer.parseInt(camps[2]);
+                String[] dat = camps[3].split("-");
                 Data data = new Data();
                 data.setData(Integer.parseInt(dat[2]), Integer.parseInt(dat[1]), Integer.parseInt(dat[0]));
-                boolean valida = Boolean.parseBoolean(camps[5]);
-                Short nVegVal = Short.parseShort(camps[6]);
-                int cost = Integer.parseInt(camps[7]);
-                //posicions = new int[]{0}; //arreglar
-                Accio ac = new Accio(titol, responsable, posicions);
-                
+                boolean valida = Boolean.parseBoolean(camps[4]);
+                Short nVegVal = Short.parseShort(camps[5]);
+                int cost = Integer.parseInt(camps[6]);
+                Accio ac;
                 if (esDemostracio == 0) {
-                    ac = new Xerrada(codi, titol,  responsable, n, data, nVegVal, cost, posicions);
+                     ac = new Xerrada (titol,  responsable, n, data, nVegVal, cost, posicions);
                 } else {
-                    ac = new Demostracio(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
+                     ac = new Demostracio(titol, responsable, data, valida, nVegVal, cost, posicions);
                 }
 
                 afegirAccio(ac);

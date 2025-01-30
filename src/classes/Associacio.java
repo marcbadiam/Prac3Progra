@@ -26,7 +26,7 @@ public class Associacio implements Serializable {
      */
     public Associacio(String nomAssociacio, String emailContacte, String[] titulacions, String[] membres, 
                         String presidentAssociacio, String secretariAssociacio, String tresorerAssociacio, 
-                        int nombreMemebres, int nombreAccions){
+                        int nombreMembres, int nombreAccions){
         this.nombreAccions = nombreAccions; //Es el nombre de accions que ha dut ha terme una associacio,
         //es necesari per generar el codi referent a cada una de les accions
         this.nomAssociacio = nomAssociacio;
@@ -35,7 +35,8 @@ public class Associacio implements Serializable {
         this.presidentAssociacio = presidentAssociacio;
         this.secretariAssociacio = secretariAssociacio;
         this.tresorerAssociacio = tresorerAssociacio;
-        //this.nombreMemebres = nombreMemebres;
+        this.membres = membres;
+        this.nombreMemebres = nombreMembres;
     }
 
     /**
@@ -106,7 +107,26 @@ public class Associacio implements Serializable {
     public String[] obtenirTitulacions(){
         return titulacions;
     }
-
+    /*
+     * Mètode per afeir membres a la llista
+     * @author Yeray
+     */
+    public void afegirMembre(String nouMembre){
+        // Creem un nou array de membres amb una capacitat més gran
+        String[] membresActualitzats = new String[nombreMemebres + 1];
+        
+        // Copiem els membres existents al nou array
+        for (int i = 0; i < nombreMemebres; i++) {
+            membresActualitzats[i] = membres[i];
+        }
+        
+        // Afegim el nou membre a la llista
+        membresActualitzats[nombreMemebres] = nouMembre;
+        
+        // Actualitzem la llista de membres i el nombre de membres
+        membres = membresActualitzats;
+        nombreMemebres++;
+    }
     /**
      * Mètode per crear una copia de la classe Associacio
      * @return copia de l'associacio

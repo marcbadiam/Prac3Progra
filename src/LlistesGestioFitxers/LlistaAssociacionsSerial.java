@@ -14,7 +14,7 @@ import Classes.Associacio;
 
 public class LlistaAssociacionsSerial {
     
-    private static final String FILE_PATH = "associacions.csv";
+    //private static final String FILE_PATH = "associacions.csv";
     private int nElem;
     private Associacio[] llista;
     private static final int CAPACITAT_INICIAL = 100; // Capacitat inicial de la llista
@@ -201,6 +201,21 @@ public class LlistaAssociacionsSerial {
             return llista[posicio];
         }
         return null;
+    }
+
+    /**
+     * Mètode per obtenir una associació en una posició específica de la llista.
+     * @param nomAssoc El nom de l'associació a buscar..
+     * @return la instància de l'associació en la posició especificada, o null si la posició és invàlida.
+     */
+    public Associacio getAssociacioNom(String nomAssoc) {
+        Associacio as = null;
+        for (int i = 0; i < nElem; i++) {
+            if (llista[i] != null && llista[i].getNomAssociacio().equalsIgnoreCase(nomAssoc)) {
+                as = llista[i];
+            }
+        }
+        return as;
     }
 
     /**

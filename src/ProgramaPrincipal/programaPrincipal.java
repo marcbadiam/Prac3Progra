@@ -61,19 +61,19 @@ public class programaPrincipal {
             
             /**
              * LListes per probar metodes
-             
+             */
              LlistaAccionsText llistaAccionsProv = new LlistaAccionsText();
-             Accio accioP1 = new Xerrada("X001", "Xerrada Intel·ligència Artificial", "Marc Badia", 50, new Data(15, 3, 2024), (short) 20, 100, new int[]{1, 2});
-             Accio accioP2 = new Demostracio("D002", "Demostració Robotica", "Pol Caballé", 30, new Data(20, 4, 2024), true, (short) 15, 200, new int[]{3});
-             Accio accioP3 = new Xerrada("X003", "Xerrada Big Data", "Yeray Zarza", 40, new Data(10, 5, 2024), (short) 25, 150, new int[]{2, 4});
-             Accio accioP4 = new Demostracio("D004", "Demostració IoT", "Anna Pérez", 20, new Data(12, 6, 2024), false, (short) 10, 120, new int[]{5});
-             Accio accioP5 = new Xerrada("X005", "Xerrada Cloud Computing", "Joan Gómez", 60, new Data(8, 7, 2024), (short) 30, 200, new int[]{6});
+             Accio accioP1 = new Xerrada ("Xerrada Intel·ligència Artificial", "Marc Badia", 50, new Data(15, 3, 2024), (short) 20, 100, new int[]{1, 2});
+             Accio accioP2 = new Demostracio( "Demostració Robotica", "Pol Caballé", new Data(20, 4, 2024), true, (short) 15, 200, new int[]{3});
+             Accio accioP3 = new Xerrada("Xerrada Big Data", "Yeray Zarza", 40, new Data(10, 5, 2024), (short) 25, 150, new int[]{2, 4});
+             Accio accioP4 = new Demostracio("Demostració IoT", "Anna Pérez", new Data(12, 6, 2024), false, (short) 10, 120, new int[]{5});
+             Accio accioP5 = new Xerrada("Xerrada Cloud Computing", "Joan Gómez", 60, new Data(8, 7, 2024), (short) 30, 200, new int[]{6});
              llistaAccionsProv.afegirAccio(accioP1);
              llistaAccionsProv.afegirAccio(accioP2);
              llistaAccionsProv.afegirAccio(accioP3);
              llistaAccionsProv.afegirAccio(accioP4);
              llistaAccionsProv.afegirAccio(accioP5);
-             */
+             
              // Crear una lista de asociaciones
              LlistaAssociacionsSerial llistaAssociacionsProv = new LlistaAssociacionsSerial();
 
@@ -102,9 +102,6 @@ public class programaPrincipal {
              
              // Crear la llista de membres
              LlistaMembresText llistaMembresProv = new LlistaMembresText();
-
-             // Crear una instància de LlistaAssociacionsSerial (es fa una suposició sobre la implementació de la classe)
-             LlistaAssociacionsSerial associacions = new LlistaAssociacionsSerial();
 
              // Crear membres de prova
              Alumnes alumne1 = new Alumnes("A001", "alumne1@example.com", false, new Data(1, 9, 2020), new Data(1, 9, 2024),"GEI",4,llistaAssociacionsProv);
@@ -337,84 +334,224 @@ public class programaPrincipal {
                     System.out.println("\nHeu escollit:");
                     System.out.println("7. Afegir una nova associació:\n\n");
 
-                    // Capturar les dades de l'associació
                     System.out.println("Nom de l'associació: ");
-                    String nomAssociacio3 = scanner.nextLine();
+                    String nomAssociacio2 = scanner.nextLine();
 
                     System.out.println("Email de contacte: ");
                     String emailContacte = scanner.nextLine();
 
-                    System.out.println("Introduir el president: ");
+                    
+                    System.out.println("Quantes titulacions vols introduir(GEB, GEI, GESST, BioGEI, DG GEB-GESST, externETSE)?");
+                    int numTitulacions = scanner.nextInt(); 
+                    while (numTitulacions > 6  && numTitulacions < 1) {
+                        System.out.println("Quantes titulacions vols introduir(GEB, GEI, GESST, BioGEI, DG GEB-GESST, externETSE)?");
+                        numTitulacions = scanner.nextInt();
+                    }
+                    scanner.nextLine();  
+
+                    String[] titulacions = new String[numTitulacions];
+                    for (int i = 0; i < numTitulacions; i++) {
+                        System.out.println("Introduïu la titulació " + (i + 1) + ": ");
+                        titulacions[i] = scanner.nextLine();
+                    }
+                    
+                    System.out.println("Quantes Membres vols introduir?");
+                    int numMembres = scanner.nextInt();
+                    scanner.nextLine();
+
+                    String[] membres = new String[numMembres];
+                    for (int i = 0; i < numMembres; i++) {
+                        System.out.println("Introduïu el Membre " + (i + 1) + ": ");
+                        membres[i] = scanner.nextLine();
+                    }
+
+                    System.out.println("Qui es el president: ");
                     String president = scanner.nextLine();
 
-                    System.out.println("Introduir el secretari: ");
+                    System.out.println("Qui es el secretari: ");
                     String secretari = scanner.nextLine();
 
-                    System.out.println("Introduir el tresorer: ");
+                    System.out.println("Qui es el tresorer: ");
                     String tresorer = scanner.nextLine();
 
                     System.out.println("Nombre d'accions: ");
                     int nombreAccions = scanner.nextInt();
-
                     
+                    Associacio associacioNova = new Associacio(nomAssociacio2, emailContacte, titulacions, membres, president, secretari, tresorer, numTitulacions, nombreAccions);
                     
+                    llistaBaseA.afegirAssoc(associacioNova);
                     break;
                 case 8:
                     System.out.println("\nHeu escollit:");
                     System.out.println("8. Alta d’un membre a una associació:\n\n");
-                    /*Es pot donar el cas que el membre sigui nou, i s’haurà d’introduir tota la informació del membre, o que el membre ja participi 
-                    en una altra associació i en aquest cas serà afegir la relació corresponent */
-                    //
+                    System.out.println("Nom de l'associació: ");
+                    String nomAs = scanner.nextLine();
+                    System.out.println("Digues el nom del membre a afegir:");
+                    String nom = scanner.nextLine();
+                    
+                    Associacio as = llistaBaseA.getAssociacioNom(nomAs);
+                    if(as == null){
+                        System.out.println("L'associacio no existeix");
+                    }
+                    else{
+                        as.afegirMembre(nom);
+                        System.out.println("Membre afegit correctament");
+                    }
+
                     break;
                 case 9:
                     System.out.println("\nHeu escollit:");
                     System.out.println("9. Afegir una nova xerrada:\n\n");
-
-                    System.out.println("Afegeix el codi:");
-                    int codi = scanner.nextInt();
+                    
                     System.out.println("\nAfegeix el titol:");
                     String titol = scanner.next();
                     System.out.println("\nAfegeix el responsable:");
                     String responsable = scanner.next();
                     System.out.println("\nAfegeix el numero d'assistents:");
                     int nAssistents = scanner.nextInt();
-                    System.out.println("\nAfegeix la valoracio:");
-                    //int valora = scanner.nextInt();
-                    //System.out.println("Afegeix l'associacio organitzadora:\n");
-                    //String llistaAssociacions = scanner.next();
-                    //Data dataXerrada = dataXerrada.Copia(null);
-                    //Xerrada xerrada = xerrada.copia(titol, responsable, dataXerrada, nAssistents, valora, llistaAssociacions);
+                    System.out.println("\nAfegeix la valoracio (una nota entre 1 i 10):");
+                    short valoracions = scanner.nextShort();
+                    System.out.println("\nAfegeix la data de la xerrada (dia mes any):");
+                    int dia = scanner.nextInt();
+                    int mes = scanner.nextInt();
+                    int any = scanner.nextInt();
+                    Data dataXerrada = new Data(dia, mes, any);
                     
-                    //System.out.println(xerrada.toString());
-                    System.out.println("Professors [alies=" + codi + "email institucional=" + titol + ", departament=" + responsable + ", despatx=" + nAssistents + "]");
+                    System.out.println("\nAfegeix el cost:");
+                    int cost = scanner.nextInt();
+                    
+                    // Posa el codi de les associacions de la xerrada
+                    System.out.println("\nAfegeix les associacions organitzadores (usant indexes de les associacions disponibles):");
+                    int[] posicionsAssociacions = new int[3]; // Depèn de la quantitat d'associacions
+                    for (int i = 0; i < posicionsAssociacions.length; i++) {
+                        posicionsAssociacions[i] = scanner.nextInt(); // Assigna la posició d'una associació
+                    }
+
+                    LlistaAccionsText llistaAccions4 = new LlistaAccionsText();
+
+                    llistaAccions4.carregarAccions();
+
+                    Xerrada xerradaAfegir = new Xerrada(titol, responsable, nAssistents, dataXerrada, valoracions, cost, posicionsAssociacions);
+                    llistaAccions4.afegirAccio(xerradaAfegir);
+
+                    System.out.println("Xerrada afegida correctament");
+                    System.out.println(xerradaAfegir.toString()); // Això imprimeix totes les dades de la xerrada
             
                     break;
                 case 10:
                     System.out.println("\nHeu escollit:");
                     System.out.println("10. Afegir una nova demostració:\n");
-                    //
+                    
+                    System.out.println("\nAfegeix el titol:");
+                    String titol1 = scanner.next();
+                    System.out.println("\nAfegeix el responsable:");
+                    String responsable1 = scanner.next();
+                    System.out.println("\nAfegeix la data de disseny (dia mes any):");
+                    int dia1 = scanner.nextInt();
+                    int mes1 = scanner.nextInt();
+                    int any1 = scanner.nextInt();
+                    Data dataDisseny = new Data(dia1, mes1, any1);
+                    
+                    System.out.println("\nLa demostració és vàlida? (true/false):");
+                    boolean valida = scanner.nextBoolean();
+                    
+                    System.out.println("\nAfegeix el nombre de vegades que s’ha ofert aquesta demostració:\n");
+                    short nVegades = scanner.nextShort();
+                    
+                    System.out.println("\nAfegeix el cost de la demostració:");
+                    int cost1 = scanner.nextInt();
+                    
+                    // Posa el codi de les associacions de la demostració
+                    System.out.println("\nAfegeix les associacions organitzadores (usant indexes de les associacions disponibles):");
+                    int[] posicionsAssociacions1 = new int[3]; // Depèn de la quantitat d'associacions
+                    for (int i = 0; i < posicionsAssociacions1.length; i++) {
+                        posicionsAssociacions1[i] = scanner.nextInt(); // Assigna la posició d'una associació
+                    }
+                    LlistaAccionsText llistaAccions5 = new LlistaAccionsText();
+                    llistaAccions5.carregarAccions();
+
+                    // Crear la nova instància de Demostracio
+                    Demostracio demostracioAfegir = new Demostracio(titol1, responsable1, dataDisseny, valida, nVegades, cost1, posicionsAssociacions1);
+                    llistaAccions5.afegirAccio(demostracioAfegir);
+                    
+
+                    System.out.println("Demostracio afegida correctament");
+                    System.out.println(demostracioAfegir.toString()); // Això imprimeix totes les dades de la demostració 
+                    
                     break;
                 case 11:
                     System.out.println("\nHeu escollit:");
                     System.out.println("11. Consultar i mostrar les dades de les demostracions que es consideren no actives:\n");
-                    /*Calcular el cost econòmic total que va suposar preparar totes aquestes demostracions */
-                    //
+                    LlistaAccionsText llistaAccions6 = new LlistaAccionsText();
+                    llistaAccions6.carregarAccions();
+
+                    for(int i = 0;i < llistaAccions6.getNElem();i++){
+                        Accio accio  = llistaAccions6.getAccio(i);
+                        if(accio instanceof Xerrada && !((Xerrada)accio).getValida()){
+                            System.out.println(accio.toString());
+                        }
+                    }
                     break;
                 case 12:
                     System.out.println("\nHeu escollit:");
                     System.out.println("12. Calcular la persona més activa (la que participa en més associacions):\n");
-                    /*En cas d’empat es considera la que té més antiguitat (en qualsevol associació). Si encara hi ha empat, s’escull qualsevol de les persones que compleixen els requisits */
-                    //
+                    LlistaMembresText llistaMembres = new LlistaMembresText();
+                    llistaMembres.carregarMembres(llistaBaseA);
+                    Membres membreMesActiu;
+                    membreMesActiu = llistaMembres.getMembre(0);
+                    for(int i = 1; i < llistaMembres.getNumMembres(); i++){
+                        Membres membreAux = llistaMembres.getMembre(i);
+                        if(membreMesActiu.getNumAssociacions() < membreAux.getNumAssociacions()){
+                            membreMesActiu = membreAux;
+                        }
+                    }
+                    System.out.println("El membre mes actiu es: "+membreMesActiu.toString());
                     break;
                 case 13:
                     System.out.println("\nHeu escollit:");
                     System.out.println("13. Consultar i mostrar les dades de les xerrades que ha tingut més d’un cert nombre indicat d’assistents:\n");
-                    //
+                    
+                    System.out.println("Digues el nombre d’assistents minim");
+                    int nAssistents2 = scanner.nextInt();
+                    scanner.nextLine();
+
+                    LlistaAccionsText llistaAccions7 = new LlistaAccionsText();
+                    llistaAccions7.carregarAccions();
+
+                    for(int i = 0;i < llistaAccions7.getNElem();i++){
+                        Accio accio  = llistaAccions7.getAccio(i);
+                        if(accio instanceof Xerrada && ((Xerrada)accio).getNAssistents() > nAssistents2){
+                            System.out.println(accio.toString());
+                        }
+                    }
                     break;
                 case 14:
                     System.out.println("\nHeu escollit:");
                     System.out.println("14. Valorar una xerrada per part d’un assistent:\n");
-                    //
+                    System.out.println("Digues el titol de la xerrada a valorar");
+                    String titolX = scanner.nextLine();
+                    System.out.println("Quia valoracio li vols ficar? (Numero 1-10)");
+                    short valoracio = scanner.nextShort();
+
+                    LlistaAccionsText llistaAccions8 = new LlistaAccionsText();
+                    llistaAccions8.carregarAccions();
+                    int j = 0;
+                    boolean  trobat = false;
+                    while(j < llistaAccions8.getNElem() && !trobat){
+                        Accio accio  = llistaAccions8.getAccio(j);
+                        if(accio instanceof Xerrada && ((Xerrada)accio).getTitol().equals(titolX)){
+                            ((Xerrada)accio).setValoracions(valoracio);
+                        }else{
+                          j++;  
+                        } 
+                    }
+                    
+                    if(trobat){
+                     System.out.println("Xerrada valorada correctament"); 
+                    }else{
+                        System.out.println("Xerrada no trobada");
+                    }
+                    
                     break;
                 case 15:
                     System.out.println("\nHeu escollit:");
@@ -465,7 +602,23 @@ public class programaPrincipal {
                 case 17:
                     System.out.println("\nHeu escollit:");
                     System.out.println("17. Donar de baixa les demostracions que no estiguin actives i que es van dissenyar abans d’una certa data:\n");
-                    //
+                    
+                    System.out.println("\nAfegeix la data de limit(dia mes any):");
+                    int dia2 = scanner.nextInt();
+                    int mes2 = scanner.nextInt();
+                    int any2 = scanner.nextInt();
+                    Data dataLimit = new Data(dia2, mes2, any2);
+
+                    LlistaAccionsText llistaAccions9 = new LlistaAccionsText();
+                    llistaAccions9.carregarAccions();
+                    for(int i = 0;i < llistaAccions9.getNElem();i++){
+                        Accio accio  = llistaAccions9.getAccio(i);
+                        if(accio instanceof Xerrada && !((Xerrada)accio).getDataXerrada().esDataInferiorOigual(dataLimit)){
+                            llistaAccions9.eliminarAccio(accio.getCodi());
+                            System.out.println("Accio eliminada correctament");
+                        }
+                    }
+                    
                     break;
                 case 18:
                     System.out.println("\nHeu escollit:");
@@ -601,17 +754,13 @@ public class programaPrincipal {
                     System.out.println("Arriba aqui! 185");
                     LlistaAccionsText llistaAccions3 = new LlistaAccionsText();
                     System.out.println("Arriba 529");
-                    int[] pos1 = {1};
-                    int[] pos2 = {2};
-                    Data data1 = new Data(); 
-                    short valor = 20;
                     //Accio accio1 = new Accio("Accio1", "Jaume", pos1);
                     //Accio accio2 = new Accio("Accio2", "Miquel", pos2);
-                    Demostracio demo1 = new Demostracio("secretari", "titol", "responsable", 10, data1, true, valor , 100, pos2);
-                    Xerrada xerra1 = new Xerrada("secretari", "titol", "responsable", 10, data1, valor , 100, pos1);
-                    llistaAccions3.afegirAccio(demo1);
+                    Accio accioD = new Demostracio( "Demostració Robotica", "Pol Caballé", new Data(20, 4, 2024), true, (short) 15, 200, new int[]{3});
+                    Accio accioX = new Xerrada("Xerrada Big Data", "Yeray Zarza", 40, new Data(10, 5, 2024), (short) 25, 150, new int[]{2, 4});
+                    llistaAccions3.afegirAccio(accioD);
 
-                    llistaAccions3.afegirAccio(xerra1);
+                    llistaAccions3.afegirAccio(accioX);
 
                     //llistaAccions3.carregarAccions();
             
@@ -835,8 +984,8 @@ public class programaPrincipal {
                 }
                     break;
                 }
-                case 83: {
-                    // Cas 83: Comprovar si una associació existeix
+                /*case 83: {
+                     Cas 83: Comprovar si una associació existeix
                     System.out.print("Introduïu el nom de l'associació: ");
                     scanner.nextLine(); // Per consumir el salt de línia pendent
                     String nomAssoc = scanner.nextLine();
@@ -847,9 +996,44 @@ public class programaPrincipal {
                         System.out.println("L'associació " + nomAssoc + " no existeix.");
                     }
                     break;
-                }                
+                } */
+                case 85:
+                System.out.println("\nHeu escollit:");
+                System.out.println("85. Obtenir i mostrar la llista de les xerrades que es duen a terme en una franja de dates indicada per teclat:\n\n");
+
+                // Demanar les dates d'inici i final
+                System.out.println("Introdueix la data d'inici (format: dd mm aaaa):");
+                int diaIniciProv = teclat.nextInt();
+                int mesIniciProv = teclat.nextInt();
+                int anyIniciProv = teclat.nextInt();
+                Data dataIniciProv = new Data(diaIniciProv, mesIniciProv, anyIniciProv);
+
+                System.out.println("Introdueix la data de finalització (format: dd mm aaaa):");
+                int diaFiProv = teclat.nextInt();
+                int mesFiProv = teclat.nextInt();
+                int anyFiProv = teclat.nextInt();
+                Data dataFiProv = new Data(diaFiProv, mesFiProv, anyFiProv);
+
+
+                // Verificar xerrades dins la franja de dates
+                System.out.println("Xerrades dins la franja de dates:");
+                for (int i = 0; i < llistaAccionsProv.getNumAccions(); i++) {
+                    Accio accio = llistaAccionsProv.getAccio(i);
+                    if (accio instanceof Xerrada) { 
+                        Xerrada xerrada = (Xerrada) accio; 
+
+                        Data dataXerradaProv = xerrada.getDataXerrada();
+
+                        // Comprovem si la data de la xerrada està dins la franja
+                        if (dataXerradaProv.esDataInferiorOigual(dataFiProv) && dataXerradaProv.esDataInferiorOigual(dataIniciProv)) {
+                            System.out.println(xerrada); // Mostrem la xerrada
+                        }
+                    }
+                }
+                break;               
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");
+                    scanner.close();
                     break;
             }
         } while (opcio != 18);

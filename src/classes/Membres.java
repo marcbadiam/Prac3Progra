@@ -33,7 +33,7 @@ import LlistesGestioFitxers.LlistaAssociacionsSerial;
         this.aliesId = aliesID; 
         this.correu = correu;
         this.associacions = associacions;
-        this.numAssociacions = 0; 
+        this.numAssociacions = this.associacions.getNElem(); 
     }
 
     /**
