@@ -28,8 +28,6 @@ public class LlistaAssociacionsSerial {
         if (nElem < llista.length) {
             llista[nElem] = a;
             nElem++;
-            //System.out.println("Associació afegida: " + a.getNomAssociacio());
-            //System.out.println("Nombre d'elements actual: " + nElem);
         } else {
             System.out.println("No es pot afegir més associacions, capacitat màxima.");
         }
@@ -59,24 +57,13 @@ public class LlistaAssociacionsSerial {
         if (n >= 0 && n < nElem && llista[n] != null) {
             return llista[n].getNomAssociacio();
         } else { return null;
-            /* 
-            String str="Err:\n";
-            if(n<0) str+= "getNomAssociacioPosicio: Assoc no existent: n<0  \n";
-            if(n>=nElem) str+= "getNomAssociacioPosicio: Assoc no existent: n>=nElem  \n"+n+ "nElem: " +nElem;
-            if(llista[n]==null) str+= "getNomAssociacioPosicio: Assoc no existent:  llista[n] == null  \n";
-            return str;*/
         }
     }
 
     public int getNumAccionsPosicio(int n) {
         if (n >= 0 && n < nElem && llista[n] != null) {
-            System.out.println("AQUIIIII SIIIIIi");
-            System.out.println("n: "+n+ "\n nElem: "+nElem);
-            System.out.println(llista[n].getNombreAccions());
             return llista[n].getNombreAccions();
         } else {
-            System.out.println("AQUIIIII");
-            System.out.println("n: "+n+ "\n nElem: "+nElem);
             return 0;
         }
     }
@@ -122,35 +109,8 @@ public class LlistaAssociacionsSerial {
             System.out.println("Classe no trobada");
         }
     }
-/* 
-    public void carregarAssociacions() {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(";");
-                String[] membres = data[2].split(",");
-                String[] titulacions = data[3].split(",");
-                Associacio a = new Associacio(data[0],data[1],
-                            membres,titulacions,data[4],data[5],data[6],
-                            Integer.parseInt(data[7]),Integer.parseInt(data[8])); 
-                afegirAssoc(a);
-            }
-        } catch (IOException e) {
-            System.out.println("No es pot carregar el fitxer: " + e.getMessage());
-        }
-    }
+ 
 
-    public void guardarAssociacions() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH))) {
-
-            for (Associacio associacio : llista) {
-                if (associacio != null)
-                    bw.write(associacio.toStringSerial()+ "\n");
-            }
-        } catch (IOException e) {
-            System.out.println("No es pot guardar el fitxer: " + e.getMessage());
-        }
-    }*/
     public String toString(){
         String str = "";
         int i=0;
