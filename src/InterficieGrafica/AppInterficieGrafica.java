@@ -113,36 +113,14 @@ public class AppInterficieGrafica extends JFrame {
         textArea.setFont(new Font("Arial", Font.PLAIN, 28));
         textArea.append("Demostracions Actives i de les Associacions Seleccionades:" + "\n\n");
         textArea.append(selectedAccions.toString() + "\n\n");
-/*
-        LlistaAssociacionsSerial selectedAssociacionsComp = new LlistaAssociacionsSerial();
-        for (int i=0; i<llistaAccions.getNElem(); i++){
-            if(llistaAccions.getAccio(i)){
-                selectedAccions.afegirAccio(llistaAccions.getAccio(i));
-            }
-        } */
-        /*
-        for (int i=0; i<llistaAccions.getNElem(); i++){
-            if(llistaAccions.getAccio(i).getAssociacio)){
-                selectedAccions.afegirAccio(llistaAccions.getAccio(i));
-            }
-        } */
-/*
-        for (Activitats activitat : llistaAccions.getLlistaActivitats()) {
-            if (activitat != null && activitat instanceof Demostracions) {
-                Demostracions demostracio = (Demostracions) activitat;
-                if (selectedAssociacions.isEmpty() || selectedAssociacions.contains(demostracio.getEntitat().getNomAssociacio())) {
-                    textArea.append(demostracio.toString() + "\n\n");
-                }
-            }
-        } */
     }
 
     public static void main(String[] args) {
-        // Crear llistes d'activitats i entitats
+
         LlistaAssociacionsSerial llistaAssociacions = new LlistaAssociacionsSerial();
         LlistaAccionsText llistaAccions = new LlistaAccionsText();
 
-        // Afegir entitats i activitats (exemple)
+
         try {
             llistaAssociacions.carregarAssociacions();
         } catch (IOException e) {
@@ -151,7 +129,6 @@ public class AppInterficieGrafica extends JFrame {
         }
         llistaAccions.carregarAccions();
 
-        // Crear i mostrar la interfície gràfica
         AppInterficieGrafica app = new AppInterficieGrafica(llistaAccions, llistaAssociacions);
         app.setVisible(true);
     }
