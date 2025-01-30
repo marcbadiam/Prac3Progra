@@ -66,8 +66,8 @@ public class programaPrincipal {
              Accio accioP1 = new Xerrada ("Xerrada Intel·ligència Artificial", "Marc Badia", 50, new Data(15, 3, 2024), (short) 20, 100, new int[]{1, 2});
              Accio accioP2 = new Demostracio( "Demostració Robotica", "Pol Caballé", new Data(20, 4, 2024), true, (short) 15, 200, new int[]{3});
              Accio accioP3 = new Xerrada("Xerrada Big Data", "Yeray Zarza", 40, new Data(10, 5, 2024), (short) 25, 150, new int[]{2, 4});
-             Accio accioP4 = new Demostracio("Demostració IoT", "Anna Pérez", new Data(12, 6, 2024), false, (short) 10, 120, new int[]{5});
-             Accio accioP5 = new Xerrada("Xerrada Cloud Computing", "Joan Gómez", 60, new Data(8, 7, 2024), (short) 30, 200, new int[]{6});
+             Accio accioP4 = new Demostracio("Demostració IoT", "Anna Pérez", new Data(12, 6, 2024), false, (short) 10, 120, new int[]{3});
+             Accio accioP5 = new Xerrada("Xerrada Cloud Computing", "Joan Gómez", 60, new Data(8, 7, 2024), (short) 30, 200, new int[]{3});
              llistaAccionsProv.afegirAccio(accioP1);
              llistaAccionsProv.afegirAccio(accioP2);
              llistaAccionsProv.afegirAccio(accioP3);
