@@ -1,4 +1,4 @@
-package classes;
+package Classes;
 
 import java.io.Serializable;
 
@@ -19,7 +19,7 @@ public class Associacio implements Serializable {
     private int nombreAccions;
     private int nombreMemebres;
 
-
+    
     /**
      * Constructor per defecte de la classe Associacio
 
@@ -31,7 +31,7 @@ public class Associacio implements Serializable {
         //es necesari per generar el codi referent a cada una de les accions
         this.nomAssociacio = nomAssociacio;
         this.emailContacte = emailContacte;
-        this.titulacions = new String[]{"GEB", "GEI", "GESST", "BioGEI", "DG GEB-GESST", "extern-ETSE"};
+        this.titulacions = titulacions; //Suposem que sempre ficaran be les titulacions80
         this.presidentAssociacio = presidentAssociacio;
         this.secretariAssociacio = secretariAssociacio;
         this.tresorerAssociacio = tresorerAssociacio;

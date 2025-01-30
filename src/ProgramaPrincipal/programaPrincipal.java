@@ -2,17 +2,17 @@ package ProgramaPrincipal;
 import java.io.IOException;
 import java.util.Scanner;
 
-import classes.Accio;
-import classes.Alumnes;
-import classes.Associacio;
-import classes.Data;
-import classes.Demostracio;
-import classes.Professors;
-import classes.Xerrada;
+import Classes.Accio;
+import Classes.Alumnes;
+import Classes.Associacio;
+import Classes.Data;
+import Classes.Demostracio;
+import Classes.Professors;
+import Classes.Xerrada;
 import LlistesGestioFitxers.LlistaAccionsText;
 import LlistesGestioFitxers.LlistaAssociacionsSerial;
 import LlistesGestioFitxers.LlistaMembresText;
-import classes.Membres;
+import Classes.Membres;
 
 
 public class programaPrincipal {
@@ -24,7 +24,7 @@ public class programaPrincipal {
     }
     
     private static void mostrarMenu(){
-        int opcio;
+        int opcio = -1;
         Scanner scanner = new Scanner(System.in);
         do{
             System.out.println("\nEscull una opcio del menu:");
@@ -49,21 +49,82 @@ public class programaPrincipal {
             System.out.println("18. Sortir de l'aplicacio:\n");
     
             opcio = Integer.parseInt(teclat.nextLine());
-    
+            LlistaAssociacionsSerial llistaBaseA = new LlistaAssociacionsSerial();
+            try {
+            llistaBaseA.carregarAssociacions();
+            } catch (IOException e) {
+            System.out.println("Error carregant les associacions: " + e.getMessage());
+            }
+            
+            
+            
+            
+            /**
+             * LListes per probar metodes
+             
+             LlistaAccionsText llistaAccionsProv = new LlistaAccionsText();
+             Accio accioP1 = new Xerrada("X001", "Xerrada Intel·ligència Artificial", "Marc Badia", 50, new Data(15, 3, 2024), (short) 20, 100, new int[]{1, 2});
+             Accio accioP2 = new Demostracio("D002", "Demostració Robotica", "Pol Caballé", 30, new Data(20, 4, 2024), true, (short) 15, 200, new int[]{3});
+             Accio accioP3 = new Xerrada("X003", "Xerrada Big Data", "Yeray Zarza", 40, new Data(10, 5, 2024), (short) 25, 150, new int[]{2, 4});
+             Accio accioP4 = new Demostracio("D004", "Demostració IoT", "Anna Pérez", 20, new Data(12, 6, 2024), false, (short) 10, 120, new int[]{5});
+             Accio accioP5 = new Xerrada("X005", "Xerrada Cloud Computing", "Joan Gómez", 60, new Data(8, 7, 2024), (short) 30, 200, new int[]{6});
+             llistaAccionsProv.afegirAccio(accioP1);
+             llistaAccionsProv.afegirAccio(accioP2);
+             llistaAccionsProv.afegirAccio(accioP3);
+             llistaAccionsProv.afegirAccio(accioP4);
+             llistaAccionsProv.afegirAccio(accioP5);
+             */
+             // Crear una lista de asociaciones
+             LlistaAssociacionsSerial llistaAssociacionsProv = new LlistaAssociacionsSerial();
+
+            // Crear y afegir manualment algunes associacions
+             Associacio assoc1 = new Associacio("A001", "contacte@cultural.org", new String[]{"GEB"},new String[]{"Membre1", "Membre2"},
+                     "Marc", "Nuria", "Descripció 1", 10, 100);
+
+             Associacio assoc2 = new Associacio("A002", "contacte@esportiva.org",new String[]{"GEB"}, new String[]{"MembreA", "MembreB"},
+                     "Pol", "Joan", "Descripció 2", 15, 150);
+
+             Associacio assoc3 = new Associacio("A003", "contacte@tecnologica.org",new String[]{"GEB"}, new String[]{"MembreX", "MembreY"},
+                     "Yeray", "Pepa", "Descripció 3", 20, 200);
+
+             Associacio assoc4 = new Associacio("A004", "contacte@solidaria.org",new String[]{"GEB"}, new String[]{"MembreM", "MembreN"},
+                     "Gerard", "Albert", "Descripció 4", 25, 250);
+
+             Associacio assoc5 = new Associacio("A005", "contacte@musical.org",new String[]{"GEB"}, new String[]{"MembreQ", "MembreP"},
+              "Pep", "Marina", "Descripció 5", 30, 300);
+
+             // Afegir associacions a la llista
+             llistaAssociacionsProv.afegirAssoc(assoc1);
+             llistaAssociacionsProv.afegirAssoc(assoc2);
+             llistaAssociacionsProv.afegirAssoc(assoc3);
+             llistaAssociacionsProv.afegirAssoc(assoc4);
+             llistaAssociacionsProv.afegirAssoc(assoc5);
+             
+             // Crear la llista de membres
+             LlistaMembresText llistaMembresProv = new LlistaMembresText();
+
+             // Crear una instància de LlistaAssociacionsSerial (es fa una suposició sobre la implementació de la classe)
+             LlistaAssociacionsSerial associacions = new LlistaAssociacionsSerial();
+
+             // Crear membres de prova
+             Alumnes alumne1 = new Alumnes("A001", "alumne1@example.com", false, new Data(1, 9, 2020), new Data(1, 9, 2024),"GEI",4,llistaAssociacionsProv);
+             Alumnes alumne2 = new Alumnes("A002", "alumne2@example.com", false, new Data(2, 9, 2020), new Data(2, 9, 2024),"GEI",3,llistaAssociacionsProv);
+             Professors professor1 = new Professors("P001", "professor1@example.com", true, new Data(1, 9, 2010), new Data(1, 9, 2020),"GEI",10,llistaAssociacionsProv);
+             Professors professor2 = new Professors("P002", "professor2@example.com", true, new Data(1, 9, 2015), new Data(1, 9, 2021),"GEI",5,llistaAssociacionsProv);
+             Alumnes alumne3 = new Alumnes("A003", "alumne3@example.com", false, new Data(3, 9, 2020), new Data(3, 9, 2024),"GEI",3,llistaAssociacionsProv);
+
+             // Afegir membres a la llista
+             llistaMembresProv.afegirMembre(alumne1);
+             llistaMembresProv.afegirMembre(alumne2);
+             llistaMembresProv.afegirMembre(professor1);
+             llistaMembresProv.afegirMembre(professor2);
+             llistaMembresProv.afegirMembre(alumne3);
             switch (opcio) {
                 case 1:
-                    System.out.println("\nHeu escollit:");
-                    System.out.println("1.Mostrar les dades de la llista d'associacions):\n\n");
-                    LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
-                    try {
-                        llistaCarregada1.carregarAssociacions();
-                        System.out.println(llistaCarregada1.toString());
-                    } catch (IOException e) {
-                        System.out.println("Error carregant les associacions: " + e.getMessage());
-                    }
-
-                    System.out.println(llistaCarregada1.toString());
-                    break;
+                System.out.println("\nHeu escollit:");
+                System.out.println("1.Mostrar les dades de la llista d'associacions):\n\n");
+                System.out.println(llistaBaseA.toString());  
+                break;
                 case 2:
                 System.out.println("\nHeu escollit:");
                 System.out.println("2. Mostrar les dades de la llista de membres que formen part d’una associació (afegint filtre per a professors, alumnes o ambdós):\n");
@@ -78,7 +139,7 @@ public class programaPrincipal {
                 
                 // Crear i carregar la llista de membres
                 LlistaMembresText llistaMembres2 = new LlistaMembresText();
-                llistaMembres2.carregarMembres();
+                llistaMembres2.carregarMembres(llistaBaseA);
                 
                 // Filtrar segons l'opció seleccionada
                 if (opcioMostrar == 1) {
@@ -123,7 +184,7 @@ public class programaPrincipal {
                 
                 // Crear i carregar la llista de membres
                 LlistaMembresText llistaMembres3 = new LlistaMembresText();
-                llistaMembres3.carregarMembres();
+                llistaMembres3.carregarMembres(llistaBaseA);
                 
                 // Filtrar segons l'opció seleccionada
                 if (opcioMostrar1 == 1) {
@@ -146,7 +207,7 @@ public class programaPrincipal {
                     System.out.println("Llista de tots els membres:");
                     for (int i = 0; i < llistaMembres3.getNumMembres(); i++) {
                         Membres membre = llistaMembres3.getMembre(i);
-                        System.out.println(llistaMembres3.getMembre(i)); // Mostrar tots els membre
+                        System.out.println(membre); // Mostrar tots els membre
                     }
                 } else {
                     System.out.println("Opció no vàlida.");
@@ -680,11 +741,113 @@ public class programaPrincipal {
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("60. Comprovació professor/alumne:\n\n");
                     LlistaMembresText professorOAlumne = new LlistaMembresText();
-                    professorOAlumne.carregarMembres();
+                    professorOAlumne.carregarMembres(llistaBaseA);
                     professorOAlumne.toString();
                     System.out.println(professorOAlumne.toString());
                     break;
+                case 80: {
+                    System.out.println("\nHeu escollit:");
+                    System.out.println("80.Mostrar les dades de la llista d'associacions):\n\n");
+                    System.out.println(llistaAssociacionsProv.toString());
+                
+                }
+                case 81: {
+                System.out.println("\nHeu escollit:");
+                System.out.println("81. Mostrar les dades de la llista de membres que formen part d’una associació (afegint filtre per a professors, alumnes o ambdós):\n");
+                
+                // Solicitar el nom de l'associació
+                System.out.println("Digues el nom de la associacio: \n");
+                String nomAssociacioProv = teclat.nextLine().trim();
+                
+                // Solicitar l'opció de filtratge
+                System.out.println("Si vols mostrar nomes professors escriu 1, si vols mostrar nomes alumnes escriu 0 i si vols mostrar ambdós escriu -1:\n");
+                int opcioMostrarProv = teclat.nextInt();
+                
+                // Filtrar segons l'opció seleccionada
+                if (opcioMostrarProv == 1) {
+                    System.out.println("Llista de professors:");
+                    for (int i = 0; i < llistaMembresProv.getNumMembres(); i++) {
+                        Membres membre = llistaMembresProv.getMembre(i);
+                        if (membre instanceof Professors) { // Comprovar si és un professor
+                            if (membre.esDAquestaAssociacio(nomAssociacioProv)) {
+                                System.out.println(membre); // Mostrar el professor que pertany a l'associació
+                            }
+                        }
+                    }
+                } else if (opcioMostrarProv == 0) {
+                    System.out.println("Llista d'alumnes:");
+                    for (int i = 0; i < llistaMembresProv.getNumMembres(); i++) {
+                        Membres membre = llistaMembresProv.getMembre(i);
+                        if (membre instanceof Alumnes) { // Comprovar si és un alumne
+                            if (membre.esDAquestaAssociacio(nomAssociacioProv)) {
+                                System.out.println(membre); // Mostrar l'alumne que pertany a l'associació
+                            }
+                        }
+                    }
+                } else if (opcioMostrarProv == -1) {
+                    System.out.println("Llista de tots els membres:");
+                    for (int i = 0; i < llistaMembresProv.getNumMembres(); i++) {
+                        Membres membre = llistaMembresProv.getMembre(i);
+                        if (membre.esDAquestaAssociacio(nomAssociacioProv)) {
+                        System.out.println(llistaMembresProv.getMembre(i)); // Mostrar tots els membres
+                        }
+                    }
+                } else {
+                    System.out.println("Opció no vàlida.");
+                }
+                    break;
+                }
+                case 82: {
+                System.out.println("\nHeu escollit:");
+                System.out.println("82. Mostrar les dades de la llista de membres que formen part de qualsevol (afegint filtre per a professors, alumnes o ambdós):\n");
+                
 
+                // Solicitar l'opció de filtratge
+                System.out.println("Si vols mostrar nomes professors escriu 1, si vols mostrar nomes alumnes escriu 0 i si vols mostrar ambdós escriu -1:\n");
+                int opcioMostrarProv = teclat.nextInt();
+                
+                // Filtrar segons l'opció seleccionada
+                if (opcioMostrarProv == 1) {
+                    System.out.println("Llista de professors:");
+                    for (int i = 0; i < llistaMembresProv.getNumMembres(); i++) {
+                        Membres membre = llistaMembresProv.getMembre(i);
+                        if (membre instanceof Professors) { // Comprovar si és un professor
+                             System.out.println(membre); // Mostrar el professor que pertany a l'associació
+                        }
+                    }
+                } else if (opcioMostrarProv == 0) {
+                    System.out.println("Llista d'alumnes:");
+                    for (int i = 0; i < llistaMembresProv.getNumMembres(); i++) {
+                        Membres membre = llistaMembresProv.getMembre(i);
+                        if (membre instanceof Alumnes) { // Comprovar si és un alumn
+                            System.out.println(membre); // Mostrar l'alumne que pertany a l'associació
+                        }
+                    }
+                } else if (opcioMostrarProv == -1) {
+                    System.out.println("Llista de tots els membres:");
+                    for (int i = 0; i < llistaMembresProv.getNumMembres(); i++) {
+                        Membres membre = llistaMembresProv.getMembre(i);
+                        System.out.println(membre); // Mostrar tots els membres
+
+                    }
+                } else {
+                    System.out.println("Opció no vàlida.");
+                }
+                    break;
+                }
+                case 83: {
+                    // Cas 83: Comprovar si una associació existeix
+                    System.out.print("Introduïu el nom de l'associació: ");
+                    scanner.nextLine(); // Per consumir el salt de línia pendent
+                    String nomAssoc = scanner.nextLine();
+                    boolean existeix = llistaAssociacionsProv.conteAssociacio(nomAssoc);
+                    if (existeix) {
+                        System.out.println("L'associació " + nomAssoc + " existeix.");
+                    } else {
+                        System.out.println("L'associació " + nomAssoc + " no existeix.");
+                    }
+                    break;
+                }                
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");
                     break;

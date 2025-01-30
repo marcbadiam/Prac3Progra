@@ -1,4 +1,4 @@
-package classes;
+package Classes;
 
 import LlistesGestioFitxers.LlistaAssociacionsSerial;
 

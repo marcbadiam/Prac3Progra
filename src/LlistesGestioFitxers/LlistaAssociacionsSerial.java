@@ -4,7 +4,7 @@ import java.io.*;
 //import java.util.ArrayList;
 //import java.util.List;
 
-import classes.Associacio;
+import Classes.Associacio;
 
 //import classes.Associacio;
 
@@ -26,7 +26,7 @@ public class LlistaAssociacionsSerial {
 
     public void afegirAssoc(Associacio a) {
         if (nElem < llista.length) {
-            llista[nElem] = a.copia();
+            llista[nElem] = a;
             nElem++;
             //System.out.println("Associació afegida: " + a.getNomAssociacio());
             //System.out.println("Nombre d'elements actual: " + nElem);

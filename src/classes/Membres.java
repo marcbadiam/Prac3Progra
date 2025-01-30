@@ -1,4 +1,4 @@
-package classes;
+package Classes;
 
 import LlistesGestioFitxers.LlistaAssociacionsSerial;
 
@@ -26,13 +26,13 @@ import LlistesGestioFitxers.LlistaAssociacionsSerial;
     /**
      * Constructor per defecte
      */
-    public Membres(String aliesID, String correu, boolean professor, Data dataAlta, Data dataBaixa) {
+    public Membres(String aliesID, String correu, boolean esprofessor, Data dataAlta, Data dataBaixa, LlistaAssociacionsSerial associacions) {
         this.dataAlta = dataAlta; 
         this.dataBaixa = dataBaixa;
-        this.professor = false; 
+        this.professor = esprofessor; 
         this.aliesId = aliesID; 
         this.correu = correu;
-        this.associacions = null;
+        this.associacions = associacions;
         this.numAssociacions = 0; 
     }
 

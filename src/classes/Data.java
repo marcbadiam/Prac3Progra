@@ -1,4 +1,4 @@
-package classes;
+package Classes;
 
 /**
  * Classe per guardar dates.

@@ -1,4 +1,6 @@
-package classes;
+package Classes;
+
+import LlistesGestioFitxers.LlistaAssociacionsSerial;
 
 /**
  * @author Yeray Zarza
@@ -8,8 +10,8 @@ package classes;
     private String ensenyament;
     private int anys;
 
-    public Alumnes(String aliesID, String correu, Data dataAlta, Data dataBaixa, String ensenyament, int anys) {
-        super(aliesID, correu, false, dataAlta, dataBaixa);
+    public Alumnes(String aliesID, String correu,boolean esProfessor, Data dataAlta, Data dataBaixa, String ensenyament, int anys,LlistaAssociacionsSerial associacions) {
+        super(aliesID, correu, esProfessor, dataAlta, dataBaixa,associacions);
         this.ensenyament = ensenyament;
         this.anys = anys;
     }

@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import classes.*;
+import Classes.*;
 
 /**
  * @author Yeray Zarza, Marc Badia, Pol Caballé

@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import classes.*;
+import Classes.*;
 import LlistesGestioFitxers.*;
 
 import java.io.IOException;

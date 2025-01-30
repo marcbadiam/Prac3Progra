@@ -4,7 +4,7 @@
 
  package LlistesGestioFitxers;
 
- import classes.*;
+ import Classes.*;
  import java.io.*;
  
  public class LlistaMembresText {
@@ -93,20 +93,21 @@
          }
      }
  
-     public void carregarMembres() {
+     public void carregarMembres(LlistaAssociacionsSerial llistaAssociacions) {
          try (BufferedReader br = new BufferedReader(new FileReader(FITXER_MEMBRES))) {
              String linia;
              while ((linia = br.readLine()) != null) {
                  String[] camps = linia.split(";");
-                 if (camps.length == 6) {  
+                 if (camps.length == 8) {  
                      try {
                          String aliesId = camps[0];
                          String email = camps[1];
-                         String departamentOrEnsenyament = camps[2];
-                         int anys = Integer.parseInt(camps[3]);
-                         String dataAltaS = camps[4]; 
-                         String dataBaixaS = camps[5]; 
-                         
+                         boolean esProfessor = Boolean.parseBoolean(camps[2]);
+                         String departamentOrEnsenyament = camps[3];
+                         int anys = Integer.parseInt(camps[4]);
+                         String dataAltaS = camps[5]; 
+                         String dataBaixaS = camps[6]; 
+                         String nomAssoc = camps[7];
                          // Procesar dataAlta
                          String[] parts = dataAltaS.split("-");
                          Data dataAlta = null;
@@ -126,12 +127,19 @@
                              int any = Integer.parseInt(parts1[2]);
                              dataBaixa = new Data(dia, mes, any);  // Crear instancia de Data para dataBaixa
                          } 
-     
+                         LlistaAssociacionsSerial llistaAssociacionsMembres = new LlistaAssociacionsSerial();
+                         for(int i = 0; i < llistaAssociacions.getNElem(); i++){
+                            Associacio a = llistaAssociacions.getAssociacio(i);
+                            if(a.getNomAssociacio().equals(nomAssoc)){
+                              llistaAssociacionsMembres.afegirAssoc(a);  
+                            }
+                         }
+
                          // Determinar si es un profesor o un alumno
-                         if (departamentOrEnsenyament.equals("DEIM") || departamentOrEnsenyament.equals("DEEEA")) {
+                         if (esProfessor) {
                              // Si es un profesor
                              if (dataAlta != null && dataBaixa != null) {
-                                 Professors professor = new Professors(aliesId, email, dataAlta, dataBaixa, departamentOrEnsenyament, anys);
+                                 Professors professor = new Professors(aliesId, email,esProfessor,dataAlta, dataBaixa, departamentOrEnsenyament, anys,llistaAssociacionsMembres);
                                  if (nMembres < MAX_MEM) {
                                      afegirMembre(professor);
                                  }
@@ -139,7 +147,7 @@
                          } else {
                              // Si es un alumno
                              if (dataAlta != null && dataBaixa != null) {
-                                 Alumnes alumne = new Alumnes(aliesId, email, dataAlta, dataBaixa, departamentOrEnsenyament, anys);
+                                 Alumnes alumne = new Alumnes(aliesId, email,esProfessor,dataAlta, dataBaixa, departamentOrEnsenyament, anys,llistaAssociacionsMembres);
                                  if (nMembres < MAX_MEM) {
                                      afegirMembre(alumne);
                                  }
