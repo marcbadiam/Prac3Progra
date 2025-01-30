@@ -79,15 +79,30 @@ public class AppInterficieGrafica extends JFrame {
         textArea.setText("");
         LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
         LlistaAccionsText selectedAccions = new LlistaAccionsText();
+        LlistaAccionsText llistaAccionsGran = new LlistaAccionsText();
+        llistaAccionsGran.carregarAccions();
+
         for (JCheckBox checkBox : checkBoxes) {
             if (checkBox.isSelected()) {
-                for(int i=0; i<llistaAssociacions.getNElem(); i++){
-                    if(llistaAssociacions.getAssociacio(i).getNomAssociacio().equals(checkBox.getText())){
-                        selectedAssociacions.afegirAssoc(llistaAssociacions.getAssociacio(i));
+
+                for(int i=0; llistaAccionsGran.getNElem()>i; i++){
+                    System.out.println("111111111111");
+                    for(int j=0; llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j)!=null ; j++){
+                        if(llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j).equals(checkBox.getText())){
+                            selectedAccions.afegirAccio(llistaAccionsGran.getAccio(i));
+                            System.out.println("HA ENTRAT\n\n");
+                            System.out.println(llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j));
+                            System.out.println(checkBox.getText());
+                        }
+                        //System.out.println("222222222222");
+                        //System.out.println("AQUIAQUIAQUI: "+llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j));
+                        //System.out.println("Checkbox: "+checkBox.getText());
                     }
                 }
             }
         }
+
+        System.out.println(selectedAccions.toString());
 /*
         LlistaAssociacionsSerial selectedAssociacionsComp = new LlistaAssociacionsSerial();
         for (int i=0; i<llistaAccions.getNElem(); i++){

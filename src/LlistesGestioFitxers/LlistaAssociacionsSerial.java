@@ -58,12 +58,13 @@ public class LlistaAssociacionsSerial {
     public String getNomAssociacioPosicio(int n) {
         if (n >= 0 && n < nElem && llista[n] != null) {
             return llista[n].getNomAssociacio();
-        } else {
+        } else { return null;
+            /* 
             String str="Err:\n";
             if(n<0) str+= "getNomAssociacioPosicio: Assoc no existent: n<0  \n";
             if(n>=nElem) str+= "getNomAssociacioPosicio: Assoc no existent: n>=nElem  \n"+n+ "nElem: " +nElem;
             if(llista[n]==null) str+= "getNomAssociacioPosicio: Assoc no existent:  llista[n] == null  \n";
-            return str;
+            return str;*/
         }
     }
 
@@ -109,7 +110,6 @@ public class LlistaAssociacionsSerial {
             Associacio associacio;
             while ((associacio = (Associacio) inputfile.readObject()) != null) {
                 afegirAssoc(associacio);
-                nElem++;
             }
         }
         catch(FileNotFoundException e) {
