@@ -2,17 +2,17 @@ package ProgramaPrincipal;
 import java.io.IOException;
 import java.util.Scanner;
 
-import Classes.Accio;
-import Classes.Alumnes;
-import Classes.Associacio;
-import Classes.Data;
-import Classes.Demostracio;
-import Classes.Professors;
-import Classes.Xerrada;
+import classes.Accio;
+import classes.Alumnes;
+import classes.Associacio;
+import classes.Data;
+import classes.Demostracio;
+import classes.Professors;
+import classes.Xerrada;
 import LlistesGestioFitxers.LlistaAccionsText;
 import LlistesGestioFitxers.LlistaAssociacionsSerial;
 import LlistesGestioFitxers.LlistaMembresText;
-import Classes.Membres;
+import classes.Membres;
 
 
 public class programaPrincipal {

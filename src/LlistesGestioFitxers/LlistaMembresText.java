@@ -4,7 +4,7 @@
 
  package LlistesGestioFitxers;
 
- import Classes.*;
+ import classes.*;
  import java.io.*;
  
  public class LlistaMembresText {
