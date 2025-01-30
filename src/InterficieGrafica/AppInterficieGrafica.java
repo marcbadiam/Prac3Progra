@@ -33,7 +33,11 @@ public class AppInterficieGrafica extends JFrame {
         panel.setLayout(new GridLayout(0, 1));
 
         checkBoxes = new ArrayList<>();
-        for (int i = 0; i < llistaAssociacions.getNElem(); i++) {
+
+        JCheckBox checkB = new JCheckBox("Sigui de cualsevol associació");
+        checkBoxes.add(checkB);
+        panel.add(checkB);
+        for (int i = 0; (i-1) < llistaAssociacions.getNElem(); i++) {
             Associacio associacio = llistaAssociacions.getAssociacio(i);
             if (associacio != null) {
                 JCheckBox checkBox = new JCheckBox(associacio.getNomAssociacio());
@@ -81,31 +85,35 @@ public class AppInterficieGrafica extends JFrame {
         LlistaAccionsText selectedAccions = new LlistaAccionsText();
         LlistaAccionsText llistaAccionsGran = new LlistaAccionsText();
         llistaAccionsGran.carregarAccions();
-
+        
         for (JCheckBox checkBox : checkBoxes) {
             if (checkBox.isSelected()) {
-
-                for(int i=0; llistaAccionsGran.getNElem()>i; i++){
+                for (int i = 0; llistaAccionsGran.getNElem() > i; i++) {
                     System.out.println("111111111111");
-                    for(int j=0; llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j)!=null ; j++){
-                        boolean esDemo = llistaAccionsGran.getAccio(i) instanceof Demostracio;
-                        //boolean esActiu = llistaAccionsGran.getAccio(i).getActiu();
-                        if(esDemo && llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j).equals(checkBox.getText())){
-                            selectedAccions.afegirAccio(llistaAccionsGran.getAccio(i));
-                            System.out.println("HA ENTRAT\n\n");
-                            System.out.println(llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j));
-                            System.out.println(checkBox.getText());
+                    for (int j = 0; llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j) != null; j++) {
+                        if (llistaAccionsGran.getAccio(i) instanceof Demostracio) {
+                            Demostracio demostracio = (Demostracio) llistaAccionsGran.getAccio(i);
+                            boolean esValida = demostracio.esValida();
+                            boolean esQualsevol = checkBox.getText().equals("Sigui de cualsevol associació");
+                            boolean titolDiferent = true;
+                            for (int k = 0; k < selectedAccions.getNElem(); k++) {
+                                if (selectedAccions.getAccio(k).getTitol().equals(llistaAccionsGran.getAccio(i).getTitol())) {
+                                    titolDiferent = false;
+                                    break;
+                                }
+                            }
+                            if (titolDiferent && esValida && (esQualsevol || llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j).equals(checkBox.getText()))) {
+                                selectedAccions.afegirAccio(llistaAccionsGran.getAccio(i));
+                            }
                         }
-                        //System.out.println("222222222222");
-                        //System.out.println("AQUIAQUIAQUI: "+llistaAccionsGran.getAccio(i).getLlistaAss().getNomAssociacioPosicio(j));
-                        //System.out.println("Checkbox: "+checkBox.getText());
                     }
                 }
             }
         }
 
         System.out.println(selectedAccions.toString());
-        textArea.setFont(new Font("Arial", Font.PLAIN, 24));
+        textArea.setFont(new Font("Arial", Font.PLAIN, 28));
+        textArea.append("Demostracions Actives i de les Associacions Seleccionades:" + "\n\n");
         textArea.append(selectedAccions.toString() + "\n\n");
 /*
         LlistaAssociacionsSerial selectedAssociacionsComp = new LlistaAssociacionsSerial();
